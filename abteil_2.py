@@ -37,5 +37,3 @@ def streak_1():
 abteil_2 = abteil_constructor.Abteil(
     1, "rot", {1: "alte Lady", 2: "rüstiger Mops"}, 0.0, False, {1: streak_1}
 )
-
-# test für branch

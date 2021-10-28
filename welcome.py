@@ -35,5 +35,3 @@ def welcome():
 
 
 welcome()
-
-# Hallo Katrin!!!
