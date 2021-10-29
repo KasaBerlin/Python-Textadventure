@@ -7,7 +7,7 @@ app.geometry(
     "800x600+200+200"
 )  # Breite 400, Höhe 300, x und y -Koordinate auf 300 und 200 setzen
 
-label_current = Label(app, text="Bitte gibt einen Usernamen ein")
+label_current = Label(app, text="Bitte gib einen Usernamen ein")
 label_current.pack(pady=10)
 
 text_username = Entry(app)
