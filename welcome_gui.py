@@ -2,6 +2,7 @@ from tkinter import *
 import random
 import abteil_constructor
 from main_gui import *
+from layout import theme
 
 def goodbye():
   reassign_button(button_current_1,"Schließen",app.destroy)
