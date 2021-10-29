@@ -8,10 +8,10 @@ from layout import theme
 # tkinter-window mit Titel und Größe erzeugen
 app = Tk()
 app.title("Reise im Bergland-Express")
-
 app.geometry(
     "900x600+200+200"
 )  # Breite 900, Höhe 600, x und y -Koordinate auf 200 und 200 setzen
+app.configure(background=theme[2]["name"])
 
 font_texts = font.Font(
     family=theme[1]["texts"]["family"], size=theme[1]["texts"]["size"]
@@ -70,8 +70,9 @@ def welcome(e=None):
       gewonnen! Du hast {urlaubsgeld}DM Urlaubsgeld dabei!\nDu beginnst deine Reise am Bahnsteig, wo dir ein seltsames 
       Paar auffällt.\nWas tust du?"""
     label_current.configure(font=font_gratulations)
+    app.configure(background=theme[2]["welcome"])
     text_username.forget()
-    label_current.config(text=text_welcome, background=theme[2]["welcome"])
+    label_current.config(text=text_welcome, background=theme[2]["welcome_label"])
     reassign_button(button_current_1, "Beobachten", streak_b)
     reassign_button(button_current_2, "Ignorieren", lambda: abteil_1.init_streak(1))
 
