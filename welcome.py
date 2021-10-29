@@ -1,8 +1,6 @@
 import random
 from abteil_1 import abteil_1
 
-winning_streak = []
-
 
 def streak_b():
     final_action = input(
