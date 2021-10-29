@@ -10,7 +10,7 @@ app = Tk()
 app.title("Reise im Bergland-Express")
 app.geometry("900x600+200+200")
 
-font_ex = font.Font(family="Aller", size=26, weight="normal")
+font_ex = font.Font(family="Josefin Sans", size=26, weight="normal")
 
 label_current = Label(text="Bitte gibt einen Usernamen ein")
 label_current.pack(pady=10)
