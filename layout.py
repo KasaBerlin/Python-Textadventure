@@ -4,18 +4,18 @@ app = {
 }
 
 fonts = {
-    "font_welcome_gratulations": {
+    "gratulations": {
         "family": "Riesling",
-        "size": 26,
+        "size": 28,
     },
-    "font_texts": {"family": "Didot", "size": 18},
-    "font_buttons": {"family": "Helvetica", "size": 16, "weight": "bold"},
-    "font_thin": {"family": "Alegreya Sans Thin", "size": 22},
+    "texts": {"family": "Didot", "size": 18},
+    "buttons": {"family": "Helvetica", "size": 16, "weight": "bold"},
+    "thin": {"family": "Alegreya Sans Thin", "size": 22},
     "colors": {
-        "c_name_font": "#ECA14D",
-        "c_name_font_alternative": "#E6ECE5",
-        "c_welcome_font": "#F5BFBF",
-        "c_abteil1_font": "#F5BFBF",
+        "name": "#ECA14D",
+        "name_alternative": "#E6ECE5",
+        "welcome": "#F5BFBF",
+        "abteil1": "#F5BFBF",
     },
 }
 
@@ -25,7 +25,7 @@ bg = {
     "name_entry": "#A080C1",
     "welcome": "#BD3535",
     "welcome_label": "#BD3535",
-    "welcome_buttons": "#4287f5",
+    "welcome_buttons": "#4287F5",
     "abteil1": "#700208",
     "abteil1_buttons": "A16265",
     "abteil1_widget": "#C24E2B",
