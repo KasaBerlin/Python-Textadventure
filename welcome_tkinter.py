@@ -9,15 +9,26 @@ app = Tk()
 app.title("Reise im Bergland-Express")
 app.geometry("800x600+200+200")
 
-# tkinter-Elemente erzeugen
-frame = Frame(bd=3, relief="raised")
-label_username = Label(frame, text="Gibt deinen Spieler*innen Namen an:")
-text_username = Entry(frame)
 
+def welcome(e):
+    urlaubsgeld = random.randrange(90, 110)
+    abteil_1.assign_inventar(urlaubsgeld)
+    text_username.pack_forget()
+
+
+# tkinter-Elemente erzeugen
+frame = Frame(bd=3, relief="raised", background="aquamarine")
+label_username = Label(frame, text="Gib deinen Spieler*innen Namen an:")
+text_username = Entry(frame, background="teal")
+text_username.bind("<Return>", welcome)
+
+
+label_welcome = Label(frame, text="")
 label_urlaubsgeld = Label(frame)
 
 frame.pack(pady=10)
 label_username.pack(pady=10)
 text_username.pack()
+label_welcome.pack()
 
 app.mainloop()
