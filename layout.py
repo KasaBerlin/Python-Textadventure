@@ -6,7 +6,7 @@ app = {
 fonts = {
     "gratulations": {
         "family": "Riesling",
-        "size": 26,
+        "size": 28,
     },
     "texts": {"family": "Didot", "size": 18},
     "buttons": {"family": "Helvetica", "size": 16, "weight": "bold"},
