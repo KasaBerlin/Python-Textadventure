@@ -1,6 +1,7 @@
 from tkinter import *
 from layout import theme
 from tkinter import font
+from platform import system
 
 # from tkmacosx import Button
 
@@ -10,9 +11,28 @@ app.title("Reise im Bergland-Express")
 app.geometry(
     "1300x900+200+30"
 )  # Breite x Höhe, x und y -Koordinate auf 200 und 200 setzen
-icon = PhotoImage(file="images/feier_icon.gif")
-app.call("wm", "iconphoto", app._w, icon)
 app.configure(background=theme[2]["name"])
+app.resizable(0, 0)
+
+#
+# ! ICON ???
+#
+# icon = PhotoImage(file="feier_icon.gif")
+# app.call("wm", "iconphoto", app._w, icon)
+# app.iconbitmap("feier_icon.icns")
+
+platformD = system()
+if platformD == "Darwin":
+    logo_image = "images/feier_icon.icns"
+
+elif platformD == "Windows":
+    logo_image = "images/feier_icon.ico"
+
+else:
+    logo_image = "images/feier_icon.xbm"
+app.iconbitmap(logo_image)
+# ! ICON - wird noch nicht angezeigt
+
 
 # FONTS anlegen
 font_texts = font.Font(
@@ -29,7 +49,7 @@ font_entry = font.Font(
 font_thin = font.Font(family=theme[1]["thin"]["family"], size=theme[1]["thin"]["size"])
 
 # Bild einbinden
-current_image = PhotoImage(file="images/feier.gif")
+current_image = PhotoImage(file="images/name.png")
 label_image = Label(image=current_image, borderwidth=0).pack(pady=30)
 
 # Elemente anlegen
@@ -72,7 +92,7 @@ button_current_2 = Button(
 
 def reassign_button(button, text, fg, command):
     button["text"] = text
-    # ? button["bg"] = bg
+    # ! button["bg"] = bg
     button["fg"] = fg
     button["command"] = command
     button_current_1.pack(padx=250, side=LEFT)

@@ -15,11 +15,11 @@ fonts = {
         "name": "#E6ECE5",
         "name_entry": "#031126",
         "welcome": "#300B05",
-        "buttons_welcome": "#300B05",
+        "welcome_buttons": "#300B05",
         "exit": "#073342",
-        "buttons_exit": "#073342",
+        "exit_buttons": "#073342",
         "goodbye": "#ed092f",
-        "buttons_goodbye": "#170004",
+        "goodbye_buttons": "#170004",
         "abteil1": "#F5BFBF",
     },
 }
@@ -27,7 +27,7 @@ fonts = {
 bg = {
     "name": "#1c4d5e",
     "name_entry": "#75b3bf",
-    "welcome": "#9e584f",
+    "welcome": "#d0806d",  # lachs
     "welcome_buttons": "#4287f5",
     "exit": "#ab9f9f",
     "exit_buttons": "#4287F5",
