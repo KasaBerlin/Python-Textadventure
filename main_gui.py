@@ -8,9 +8,8 @@ from platform import system
 # tkinter-window mit Titel und Größe erzeugen
 app = Tk()
 app.title("Reise im Bergland-Express")
-app.geometry(
-    "1300x900+200+30"
-)  # Breite x Höhe, x und y -Koordinate auf 200 und 200 setzen
+# Breite x Höhe, x und y -Koordinate auf 200 und 200 setzen
+app.geometry("1300x900+200+30")
 app.configure(background=theme[2]["name"])
 app.resizable(0, 0)
 
@@ -36,17 +35,28 @@ app.iconbitmap(logo_image)
 
 # FONTS anlegen
 font_texts = font.Font(
-    family=theme[1]["texts"]["family"], size=theme[1]["texts"]["size"]
+    family=theme[1]["texts"]["family"],
+    size=theme[1]["texts"]["size"],
+)
+font_texts_bold = font.Font(
+    family=theme[1]["texts_bold"]["family"],
+    size=theme[1]["texts_bold"]["size"],
+    weight=theme[1]["texts_bold"]["weight"],
+)
+font_texts_large = font.Font(
+    family=theme[1]["texts_large"]["family"], size=theme[1]["texts_large"]["size"]
 )
 font_gratulations = font.Font(
     family=theme[1]["gratulations"]["family"], size=theme[1]["gratulations"]["size"]
 )
 font_entry = font.Font(
-    family=theme[1]["buttons"]["family"],
-    size=theme[1]["buttons"]["size"],
-    weight=theme[1]["buttons"]["weight"],
+    family=theme[1]["entry"]["family"],
+    size=theme[1]["entry"]["size"],
+    weight=theme[1]["entry"]["weight"],
 )
-font_thin = font.Font(family=theme[1]["thin"]["family"], size=theme[1]["thin"]["size"])
+font_buttons = font.Font(
+    family=theme[1]["buttons"]["family"], size=theme[1]["buttons"]["size"]
+)
 
 # Bild einbinden
 current_image = PhotoImage(file="images/name.png")
@@ -62,20 +72,21 @@ label_current = Label(
 label_current.pack(pady=20)
 label_current.configure(font=font_texts)
 
-text_username = Entry(
+entry_current = Entry(
     app,
+    width=25,
     bg=theme[2]["name_entry"],
     fg=theme[1]["colors"]["name_entry"],
     font=font_entry,
     borderwidth=0,
 )
-text_username.pack(padx=5, pady=10)
+entry_current.pack(padx=5, pady=10)
 
 button_current_1 = Button(
     app,
     height=5,
     width=10,
-    font=font_thin,
+    font=font_buttons,
     # bg=theme[2]["welcome_buttons"],
     borderwidth=0,
 )
@@ -84,7 +95,7 @@ button_current_2 = Button(
     app,
     height=5,
     width=10,
-    font=font_thin,
+    font=font_buttons,
     # bg=theme[2]["welcome_buttons"],
     borderwidth=0,
 )

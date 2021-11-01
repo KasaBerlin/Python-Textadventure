@@ -33,7 +33,7 @@ def streak_b():
         text=text_streak_b,
         background=theme[2]["exit"],
         fg=theme[1]["colors"]["exit"],
-        pady=83,
+        pady=56,
     )
     label_current.configure(font=font_texts)
     current_image.configure(file="images/exit.png")
@@ -58,10 +58,10 @@ def welcome(e=None):
     app.configure(background=theme[2]["welcome"])
     urlaubsgeld = random.randrange(90, 110)
     abteil_constructor.abteil_1_obj.assign_inventar(urlaubsgeld)
-    text_welcome = f"""Herzlichen Glückwunsch!\n{text_username.get()}, du hast eine Zugfahrt im Bergland-Express im Radio-Quiz 
-      gewonnen! Du hast {urlaubsgeld}DM Urlaubsgeld dabei!\n\nDeine Reise beginnt am Bahnsteig Nummer 12, wo dir ein seltsames 
-      Paar auffällt.\nWas tust du?"""
-    text_username.forget()
+    text_welcome = f"""Herzlichen Glueckwunsch!\n{entry_current.get()}, du hast eine Zugfahrt im Bergland-Express im Radio-Quiz 
+      gewonnen! Du hast {urlaubsgeld}DM Urlaubsgeld dabei!\n\nDeine Reise beginnt am Bahnsteig Nummer 12, wo du auf ein seltsames 
+      Paar aufmerksam wirst.\nWas tust du?"""
+    entry_current.forget()
     label_current.config(
         text=text_welcome,
         background=theme[2]["welcome"],
@@ -83,9 +83,10 @@ def welcome(e=None):
         "Ignorieren",
         # theme[2]["welcome_buttons"],
         theme[1]["colors"]["welcome_buttons"],
-        lambda: abteil_constructor.abteil_1_obj.init_streak(1),
+        # lambda: abteil_constructor.abteil_1_obj.init_streak(1),
+        lambda: abteil_constructor.abteil_3_obj.init_streak(1),
     )
 
 
-text_username.bind("<Return>", welcome)
+entry_current.bind("<Return>", welcome)
 app.mainloop()
