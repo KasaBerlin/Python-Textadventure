@@ -35,20 +35,18 @@ font_texts_bold = font.Font(
     weight=theme[1]["texts_bold"]["weight"],
 )
 font_texts_large = font.Font(
-    family=theme[1]["texts_large"]["family"],
-    size=theme[1]["texts_large"]["size"],
-    weight=theme[1]["texts_large"]["weight"],
+    family=theme[1]["texts_large"]["family"], size=theme[1]["texts_large"]["size"]
 )
 font_gratulations = font.Font(
     family=theme[1]["gratulations"]["family"], size=theme[1]["gratulations"]["size"]
 )
 font_entry = font.Font(
-    family=theme[1]["buttons"]["family"],
-    size=theme[1]["buttons"]["size"],
-    weight=theme[1]["buttons"]["weight"],
+    family=theme[1]["entry"]["family"],
+    size=theme[1]["entry"]["size"],
+    weight=theme[1]["entry"]["weight"],
 )
 font_buttons = font.Font(
-    family=theme[1]["thin"]["family"], size=theme[1]["thin"]["size"]
+    family=theme[1]["buttons"]["family"], size=theme[1]["buttons"]["size"]
 )
 
 # Bild einbinden
