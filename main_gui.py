@@ -21,22 +21,23 @@ app.resizable(0, 0)
 # app.call("wm", "iconphoto", app._w, icon)
 # app.iconbitmap("feier_icon.icns")
 
-platformD = system()
-if platformD == "Darwin":
-    logo_image = "images/feier_icon.icns"
 
-elif platformD == "Windows":
-    logo_image = "images/feier_icon.ico"
-
-else:
-    logo_image = "images/feier_icon.xbm"
-app.iconbitmap(logo_image)
 # ! ICON - wird noch nicht angezeigt
 
 
 # FONTS anlegen
 font_texts = font.Font(
     family=theme[1]["texts"]["family"], size=theme[1]["texts"]["size"]
+)
+font_texts_bold = font.Font(
+    family=theme[1]["texts_bold"]["family"],
+    size=theme[1]["texts_bold"]["size"],
+    weight=theme[1]["texts_bold"]["weight"],
+)
+font_texts_large = font.Font(
+    family=theme[1]["texts_large"]["family"],
+    size=theme[1]["texts_large"]["size"],
+    weight=theme[1]["texts_large"]["weight"],
 )
 font_gratulations = font.Font(
     family=theme[1]["gratulations"]["family"], size=theme[1]["gratulations"]["size"]
@@ -46,7 +47,9 @@ font_entry = font.Font(
     size=theme[1]["buttons"]["size"],
     weight=theme[1]["buttons"]["weight"],
 )
-font_thin = font.Font(family=theme[1]["thin"]["family"], size=theme[1]["thin"]["size"])
+font_buttons = font.Font(
+    family=theme[1]["thin"]["family"], size=theme[1]["thin"]["size"]
+)
 
 # Bild einbinden
 current_image = PhotoImage(file="images/name.png")
@@ -75,7 +78,7 @@ button_current_1 = Button(
     app,
     height=5,
     width=10,
-    font=font_thin,
+    font=font_buttons,
     # bg=theme[2]["welcome_buttons"],
     borderwidth=0,
 )
@@ -84,7 +87,7 @@ button_current_2 = Button(
     app,
     height=5,
     width=10,
-    font=font_thin,
+    font=font_buttons,
     # bg=theme[2]["welcome_buttons"],
     borderwidth=0,
 )

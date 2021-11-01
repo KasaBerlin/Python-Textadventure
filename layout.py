@@ -5,12 +5,14 @@ app = {
 
 fonts = {
     "gratulations": {
-        "family": "Riesling",
-        "size": 32,
+        "family": "The Bravery Lite Ver.",
+        "size": 34,
     },
-    "texts": {"family": "Didot", "size": 22},
-    "buttons": {"family": "Helvetica", "size": 18, "weight": "bold"},
-    "thin": {"family": "Alegreya Sans Thin", "size": 22},
+    "texts": {"family": "Marbre", "size": 30},
+    "texts_bold": {"family": "Marbre", "size": 30, "weight": "bold"},
+    "texts_large": {"family": "Marbre", "size": 46, "weight": "bold"},
+    "entry": {"family": "Athene", "size": 18, "weight": "bold"},
+    "buttons": {"family": "Sinhala MN", "size": 18},
     "colors": {
         "name": "#E6ECE5",
         "name_entry": "#031126",
@@ -21,6 +23,14 @@ fonts = {
         "goodbye": "#ed092f",
         "goodbye_buttons": "#170004",
         "abteil1": "#F5BFBF",
+        "abteil1_buttons": "A16265",
+        "abteil1_widget": "#C24E2B",
+        "abteil2": "#4287F5",
+        "abteil2_buttons": "#4287F5",
+        "abteil3_intro": "#ff8a66",
+        "abteil3_buttons_intro": "#181a1f",
+        "abteil3_directions": "#011414",
+        # "abteil3_entry_directions": "#4287F5",
     },
 }
 
@@ -38,6 +48,10 @@ bg = {
     "abteil1_widget": "#C24E2B",
     "abteil2": "#4287F5",
     "abteil2_buttons": "#4287F5",
+    "abteil3_intro": "#181a1f",
+    "abteil3_buttons_intro": "#780707",
+    "abteil3_directions": "#3b6061",
+    "abteil3_entry_directions": "#174a4a",
 }
 
 theme = [app, fonts, bg]
