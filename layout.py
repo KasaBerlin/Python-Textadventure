@@ -37,19 +37,13 @@ fonts = {
 bg = {
     "name": "#1c4d5e",
     "name_entry": "#75b3bf",
-    "welcome": "#d0806d",  # lachs
-    "welcome_buttons": "#4287f5",
+    "welcome": "#d0806d",
     "exit": "#ab9f9f",
-    "exit_buttons": "#4287F5",
     "goodbye": "#c2c2c2",
-    "goodbye_buttons": "#ed092f",
     "abteil1": "#700208",
-    "abteil1_buttons": "A16265",
     "abteil1_widget": "#C24E2B",
     "abteil2": "#4287F5",
-    "abteil2_buttons": "#4287F5",
     "abteil3_intro": "#181a1f",
-    "abteil3_buttons_intro": "#780707",
     "abteil3_directions": "#3b6061",
     "abteil3_entry_directions": "#174a4a",
 }
