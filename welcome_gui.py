@@ -37,25 +37,27 @@ def streak_b():
     reassign_button(
         button_current_1,
         "Ja",
-        color["exit_button"],
         welcome,
+        color["exit_button"],
     )
     reassign_button(
         button_current_2,
         "Nein",
-        color["exit_button"],
         goodbye,
+        color["exit_button"],
     )
 
 
 def welcome(e=None):
+    # check ob wir schon Urlaubsgeld erhalten haben
+    if not len(abteil_constructor.abteil_1_obj.inventar):   
+        urlaubsgeld = random.randrange(90, 110)
+        abteil_constructor.abteil_1_obj.assign_inventar(urlaubsgeld)
     app.configure(bg=bg["welcome"])
-    urlaubsgeld = random.randrange(90, 110)
-    abteil_constructor.abteil_1_obj.assign_inventar(urlaubsgeld)
-    text_welcome = f"""Herzlichen Glueckwunsch!\n{text_username.get()}, du hast eine Zugfahrt im Bergland-Express im Radio-Quiz 
-      gewonnen! Du hast {urlaubsgeld}DM Urlaubsgeld dabei!\n\nDeine Reise beginnt am Bahnsteig Nummer 12, wo dir ein seltsames 
+    text_welcome = f"""Herzlichen Glueckwunsch!\n{entry_username.get()}, du hast eine Zugfahrt im Bergland-Express im Radio-Quiz 
+      gewonnen! Du hast {abteil_constructor.abteil_1_obj.inventar[0]}DM Urlaubsgeld dabei!\n\nDeine Reise beginnt am Bahnsteig Nummer 12, wo dir ein seltsames 
       Paar auffällt.\nWas tust du?"""
-    text_username.forget()
+    entry_username.forget()
     label_current.config(
         text=text_welcome,
         bg=bg["welcome"],
@@ -64,20 +66,19 @@ def welcome(e=None):
     )
     label_current.configure(font=font_gratulations)
     current_image.configure(file="images/welcome.png")
-
     reassign_button(
         button_current_1,
         "Beobachten",
-        color["welcome_button"],
         streak_b,
+        color["welcome_button"],
     )
     reassign_button(
         button_current_2,
         "Ignorieren",
-        color["welcome_button"],
         lambda: abteil_constructor.abteil_1_obj.init_streak(1),
+        color["welcome_button"],
     )
 
 
-text_username.bind("<Return>", welcome)
+entry_username.bind("<Return>", welcome)
 app.mainloop()

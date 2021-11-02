@@ -58,14 +58,14 @@ label_current = Label(
 label_current.pack(pady=20)
 label_current.configure(font=font_texts)
 
-text_username = Entry(
+entry_username = Entry(
     app,
     bg=bg["name_entry"],
     fg=color["name_entry"],
     font=font_entry,
     borderwidth=0,
 )
-text_username.pack(padx=5, pady=10)
+entry_username.pack(padx=5, pady=10)
 # TODO text_username = entry_current
 entry_current=Entry(app)
 
@@ -88,8 +88,8 @@ button_current_2 = Button(
 def forget_buttons():
     button_current_1.forget()
     button_current_2.forget()
-
-def reassign_button(button, text, fg, command):
+# TODO bitte beachten Parameter umgedreht
+def reassign_button(button, text, command,fg=None):
     button["text"] = text
     button["fg"] = fg
     button["command"] = command
