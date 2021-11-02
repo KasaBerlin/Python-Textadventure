@@ -1,22 +1,17 @@
 import tkinter as tk
-from tkinter import font,PhotoImage,Label,Entry,Button,LEFT,RIGHT
+from tkinter import font, PhotoImage, Label, Entry, Button, LEFT, RIGHT
 from layout import theme
 from collections import namedtuple
 
-app,fonts,bg=theme
-    
-# from tkmacosx import Button
+app, fonts, bg = theme
 
 # tkinter-window mit Titel und Größe erzeugen
 app = tk.Tk()
 app.title("Reise im Bergland-Express")
-app.geometry(
-    "1300x900+200+30"
-)  # Breite x Höhe, x und y -Koordinate auf 200 und 200 setzen
-# TODO Vollbild?
+w, h = app.winfo_screenwidth(), app.winfo_screenheight()
+app.geometry("%dx%d+0+0" % (w, h))
 # TODO grid/place buttons
-app.configure(background=theme[2]["name"])
-app.resizable(0, 0)
+app.configure(background=bg["name"])
 
 #
 # ! ICON ???
@@ -27,37 +22,29 @@ app.resizable(0, 0)
 
 # ! ICON - wird noch nicht angezeigt
 
-normal=fonts["text"]
-bold=fonts["text_bold"]
-large=fonts["text_large"]
-gratulations=fonts["gratulations"]
-entry=fonts["entry"]
-button=fonts["button"]
-color=fonts["color"]
+normal = fonts["text"]
+bold = fonts["text_bold"]
+large = fonts["text_large"]
+gratulations = fonts["gratulations"]
+entry = fonts["entry"]
+button = fonts["button"]
+color = fonts["color"]
 
 # FONTS anlegen
-font_texts = font.Font(
-    family=normal["family"], size=normal["size"]
-)
+font_texts = font.Font(family=normal["family"], size=normal["size"])
 font_texts_bold = font.Font(
     family=bold["family"],
     size=bold["size"],
     weight=bold["weight"],
 )
-font_texts_large = font.Font(
-    family=large["family"], size=large["size"]
-)
-font_gratulations = font.Font(
-    family=gratulations["family"], size=gratulations["size"]
-)
+font_texts_large = font.Font(family=large["family"], size=large["size"])
+font_gratulations = font.Font(family=gratulations["family"], size=gratulations["size"])
 font_entry = font.Font(
     family=entry["family"],
     size=entry["size"],
     weight=entry["weight"],
 )
-font_buttons = font.Font(
-    family=button["family"], size=button["size"]
-)
+font_buttons = font.Font(family=button["family"], size=button["size"])
 
 # Bild einbinden
 current_image = PhotoImage(file="images/name.png")
@@ -98,11 +85,12 @@ button_current_2 = Button(
     borderwidth=0,
 )
 
+
 def reassign_button(button, text, fg, command):
     button["text"] = text
-    # ! button["bg"] = bg
     button["fg"] = fg
     button["command"] = command
-    button.pack(padx=250, side=LEFT if button == button_current_1 else RIGHT)
+    button.pack(padx=350, side=LEFT if button == button_current_1 else RIGHT)
+
 
 # ! mainloop befindet sich in welcome_gui
