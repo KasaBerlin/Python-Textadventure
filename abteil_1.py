@@ -48,10 +48,11 @@ def streak_b():
     abteil_constructor.abteil_2_obj.assign_inventar(abteil_constructor.abteil_1_obj.inventar)
     abteil_constructor.abteil_2_obj.init_streak(1)
 
-def streak_h():
+def streak_h(intro=False):
+    if intro:
+        label_current.config(text="""Sie antwortet freundlich das er noch recht rüstig ist für sein Alter 
+        und gibt ihm ein Leckerli.\nSie fragt dich, ob du sein Alter erraten kannst? Gib einen Tipp ab:""")
     forget_buttons()
-    label_current.config(text="""Sie antwortet freundlich das er noch recht rüstig ist für sein Alter 
-    und gibt ihm ein Leckerli.\nSie fragt dich, ob du sein Alter erraten kannst? Gib einen Tipp ab:""")
     entry_current.pack()
     entry_current.config(textvariable=guessEntry)
 
@@ -66,7 +67,7 @@ def streak_i():
     reassign_button(
     button_current_2,
     "Du sprichst die Dame auf das Alter ihres Hundes an und streichelst ihn über den Kopf.",
-    streak_h,
+    lambda: streak_h(intro=True),
     )
 
 entry_current.bind("<Return>", dog_quiz)
