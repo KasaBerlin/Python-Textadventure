@@ -93,4 +93,9 @@ def reassign_button(button, text, fg, command):
     button.pack(padx=350, side=LEFT if button == button_current_1 else RIGHT)
 
 
+def forget_buttons():
+    button_current_1.forget
+    button_current_2.forget
+
+
 # ! mainloop befindet sich in welcome_gui
