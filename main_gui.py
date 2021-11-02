@@ -81,6 +81,8 @@ text_username = Entry(
     borderwidth=0,
 )
 text_username.pack(padx=5, pady=10)
+# TODO text_username = entry_current
+entry_current=Entry(app)
 
 button_current_1 = Button(
     app,
@@ -97,6 +99,10 @@ button_current_2 = Button(
     font=font_buttons,
     borderwidth=0,
 )
+
+def forget_buttons():
+    button_current_1.forget()
+    button_current_2.forget()
 
 def reassign_button(button, text, fg, command):
     button["text"] = text
