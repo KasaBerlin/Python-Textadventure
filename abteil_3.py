@@ -1,4 +1,4 @@
-from tkinter import messagebox
+from tkinter import StringVar, messagebox
 from main_gui import *
 import random
 
@@ -6,14 +6,20 @@ import random
 
 directions = ["Left", "Right", "Up", "Down"]
 entry_direction = Entry(app)
+counter = 0
 
 
 def racing_train_game(e):
+    global entry_direction
+    global counter
+    # while counter < 20:
     key_press = e.keysym
-
+    entry_text = StringVar(key_press)
+    entry_direction.config(textvariable=entry_text)
+    print(counter)
     if key_press == label_current["text"]:
         label_current.config(text=random.choice(directions))
-
+        counter += 1
     else:
         meldung = messagebox.askquestion(
             title="Leider verloren",

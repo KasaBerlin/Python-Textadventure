@@ -3,7 +3,8 @@ from typing_extensions import IntVar
 import abteil_constructor
 from main_gui import *
 
-guessEntry = IntVar()
+# guessEntry = IntVar()
+guessEntry = 0
 guesses_made = 0
 
 

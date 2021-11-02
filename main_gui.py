@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import font, PhotoImage, Label, Entry, Button, LEFT, RIGHT
+from tkinter import font, PhotoImage, Label, Entry, Button, LEFT, RIGHT, END
 from layout import theme
 from collections import namedtuple
 
