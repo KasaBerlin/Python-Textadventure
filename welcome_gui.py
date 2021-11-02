@@ -75,7 +75,8 @@ def welcome(e=None):
         button_current_2,
         "Ignorieren",
         color["welcome_button"],
-        lambda: abteil_constructor.abteil_1_obj.init_streak(1),
+        # lambda: abteil_constructor.abteil_1_obj.init_streak(1),
+        lambda: abteil_constructor.abteil_3_obj.init_streak(1),
     )
 
 
