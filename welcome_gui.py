@@ -9,7 +9,7 @@ def goodbye():
     reassign_button(button_current_1, "Schließen", app.destroy)
     button_current_2.destroy()
     label_current.config(text="Schade! Auf Wiedersehen!")
-
+    
 
 def streak_b():
     text_streak_b = """Die beiden verlassen den Bahnhof. Du verpasst deinen Zug und dein

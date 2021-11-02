@@ -13,9 +13,15 @@ label_current.pack(pady=10)
 text_username = Entry(app)
 text_username.pack()
 
+# TODO text_username = entry_current
+entry_current=Entry(app)
+
 button_current_1 = Button(app)
 button_current_2 = Button(app)
 
+def forget_buttons():
+    button_current_1.forget()
+    button_current_2.forget()
 
 def reassign_button(button, text, command):
     button["text"] = text
