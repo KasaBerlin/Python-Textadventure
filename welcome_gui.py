@@ -1,39 +1,35 @@
-from tkinter import *
 import random
-from tkinter import font
-from layout import theme
 import abteil_constructor
 from main_gui import *
 
 
 def goodbye():
-    app.configure(background=theme[2]["goodbye"])
+    app.configure(bg=bg["goodbye"])
     reassign_button(
         button_current_1,
         "Schließen",
-        # theme[2]["goodbye_buttons"],
-        theme[1]["colors"]["goodbye_buttons"],
+        color["goodbye_button"],
         app.destroy,
     )
-    button_current_1.config(padx=400, height=2)
+    button_current_1.config(padx=650, height=2)
     button_current_2.destroy()
     label_current.config(
         text="Schade...\nAuf Wiedersehen!",
-        background=theme[2]["goodbye"],
-        fg=theme[1]["colors"]["goodbye"],
+        bg=bg["goodbye"],
+        fg=color["goodbye"],
     )
     current_image.configure(file="images/goodbye.png")
 
 
 def streak_b():
-    app.configure(background=theme[2]["exit"])
+    app.configure(bg=bg["exit"])
     text_streak_b = """Die beiden verlassen den Bahnhof.\n\nDu verpasst deinen Zug und dein
     toller Gewinn verfällt...\nWillst du noch einmal von vorn beginnen?"""
     label_current.config(
         text=text_streak_b,
-        background=theme[2]["exit"],
-        fg=theme[1]["colors"]["exit"],
-        pady=56,
+        bg=bg["exit"],
+        fg=color["exit"],
+        pady=83,
     )
     label_current.configure(font=font_texts)
     current_image.configure(file="images/exit.png")
@@ -41,21 +37,19 @@ def streak_b():
     reassign_button(
         button_current_1,
         "Ja",
-        # theme[2]["exit_buttons"],
-        theme[1]["colors"]["exit_buttons"],
+        color["exit_button"],
         welcome,
     )
     reassign_button(
         button_current_2,
         "Nein",
-        # theme[2]["exit_buttons"],
-        theme[1]["colors"]["exit_buttons"],
+        color["exit_button"],
         goodbye,
     )
 
 
 def welcome(e=None):
-    app.configure(background=theme[2]["welcome"])
+    app.configure(bg=bg["welcome"])
     urlaubsgeld = random.randrange(90, 110)
     abteil_constructor.abteil_1_obj.assign_inventar(urlaubsgeld)
     text_welcome = f"""Herzlichen Glueckwunsch!\n{entry_current.get()}, du hast eine Zugfahrt im Bergland-Express im Radio-Quiz 
@@ -64,8 +58,8 @@ def welcome(e=None):
     entry_current.forget()
     label_current.config(
         text=text_welcome,
-        background=theme[2]["welcome"],
-        fg=theme[1]["colors"]["welcome"],
+        bg=bg["welcome"],
+        fg=color["welcome"],
         pady=0,
     )
     label_current.configure(font=font_gratulations)
@@ -74,17 +68,14 @@ def welcome(e=None):
     reassign_button(
         button_current_1,
         "Beobachten",
-        # theme[2]["welcome_buttons"],
-        theme[1]["colors"]["welcome_buttons"],
+        color["welcome_button"],
         streak_b,
     )
     reassign_button(
         button_current_2,
         "Ignorieren",
-        # theme[2]["welcome_buttons"],
-        theme[1]["colors"]["welcome_buttons"],
-        # lambda: abteil_constructor.abteil_1_obj.init_streak(1),
-        lambda: abteil_constructor.abteil_3_obj.init_streak(1),
+        color["welcome_button"],
+        lambda: abteil_constructor.abteil_1_obj.init_streak(1),
     )
 
 
