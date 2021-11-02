@@ -1,6 +1,6 @@
 import abteil_constructor
 from main_gui import *
-from tkinter import ttk
+from tkinter import ttk,StringVar
 
 speisekarte = {
         "Getränke": {

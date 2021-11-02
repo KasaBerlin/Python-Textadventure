@@ -1,5 +1,4 @@
-import tkinter as tk
-from tkinter import font,PhotoImage,Label,Entry,Button,LEFT,RIGHT
+from tkinter import font,PhotoImage,Label,Entry,Button,LEFT,RIGHT,Tk
 from layout import theme
 from collections import namedtuple
 
@@ -8,7 +7,7 @@ app,fonts,bg=theme
 # from tkmacosx import Button
 
 # tkinter-window mit Titel und Größe erzeugen
-app = tk.Tk()
+app = Tk()
 app.title("Reise im Bergland-Express")
 app.geometry(
     "1300x900+200+30"

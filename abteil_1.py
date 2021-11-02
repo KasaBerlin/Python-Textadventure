@@ -1,6 +1,7 @@
 import math
 import abteil_constructor
 from main_gui import *
+from tkinter import IntVar
 
 guessEntry = IntVar()
 guesses_made = 0
