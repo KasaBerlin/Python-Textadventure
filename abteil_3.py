@@ -1,39 +1,41 @@
-from tkinter import StringVar, messagebox
+from tkinter import messagebox
 from main_gui import *
 import random
-
-# import time
+import abteil_constructor
 
 directions = ["Left", "Right", "Up", "Down"]
 entry_direction = Entry(app)
-counter = 0
+label_counter = Label(app)
 
 
 def racing_train_game(e):
     global entry_direction
-    global counter
-    # while counter < 20:
-    key_press = e.keysym
-    entry_text = StringVar(key_press)
-    entry_direction.config(textvariable=entry_text)
-    print(counter)
-    if key_press == label_current["text"]:
-        label_current.config(text=random.choice(directions))
-        counter += 1
-    else:
-        meldung = messagebox.askquestion(
-            title="Leider verloren",
-            message="Du hast leider nicht richtig gedrückt.\nWillst du es nochmal versuchen?",
-        )
-        if meldung == "no":
-            label_current.config(
-                text="Der Zug ist entgleist. Es gibt viele Tote und Verletzte..."
+    label_counter.config(
+        text=f"Der Zug fährt {abteil_constructor.abteil_3_obj.geschwindigkeit} kmh."
+    )
+    abteil_constructor.abteil_3_obj.geschwindigkeit -= 7
+    if abteil_constructor.abteil_3_obj.geschwindigkeit > 80:
+        entry_direction.delete(0, END)
+        if e.keysym == label_current["text"]:
+            entry_direction.insert(0, e.keysym)
+            label_current.config(text=random.choice(directions))
+        else:
+            meldung = messagebox.askquestion(
+                title="Leider verloren",
+                message="Du hast leider nicht richtig gedrückt.\nWillst du es nochmal versuchen?",
             )
+            if meldung == "no":
+                label_current.config(
+                    text="Der Zug ist entgleist. Es gibt viele Tote und Verletzte..."
+                )
+    else:
+        label_current.config(text="Sehr gut. Der Zug fährt wieder normal")
 
 
 def racing_train_starter():
     app.configure(background=bg["abteil3_directions"])
     entry_direction.pack(pady=30)
+    label_counter.pack(pady=20)
     label_current.configure(font=font_texts_large)
     label_current.config(
         text=random.choice(directions),
@@ -44,7 +46,6 @@ def racing_train_starter():
     button_current_1.forget()
 
 
-# entry_direction.bind("<Key>", racing_train)
 entry_direction.bind("<Left>", racing_train_game)
 entry_direction.bind("<Right>", racing_train_game)
 entry_direction.bind("<Up>", racing_train_game)
@@ -55,8 +56,8 @@ def streak_emergency():
     app.configure(background=bg["abteil3_intro"])
     label_current.configure(font=font_texts_bold)
     text_emergency = """Der Lokführer kommt panisch auf dich zu gerannt und bittet um deine Hilfe.\n
-    Durch die Kälte in den Bergen, ist die Bremse eingefroren...\n Der Lokführer kümmert sich schon darum,
-    aber um den Zug auf den Schienen zu halten, musst du beim Lenken helfen.
+    Durch die Kälte in den Bergen, ist die Bremse eingefroren und der Zug fährt viel zu schnell.
+    \n Der Lokführer kümmert sich schon darum, aber um den Zug auf den Schienen zu halten, musst du beim Lenken helfen.
     \n\nDrücke die Pfeiltasten in die angezeigte Richtung."""
 
     label_current.config(
