@@ -1,8 +1,7 @@
-from abteil_1 import streak_i, streak_h
-from abteil_2 import streak_1
+from abteil_1 import streak_i,streak_h
+from abteil_2 import streak_1 as streak_1_2
 from abteil_3 import streak_emergency
-
-
+from abteil_4 import streak_1 as streak_1_4
 class Abteil:
     def __init__(
         self,
@@ -25,27 +24,7 @@ class Abteil:
     def init_streak(self, i):
         self.streaks[i]()
 
-    def assign_inventar(self, inv):
-        self.inventar.append(inv)
-
-
-abteil_1_obj = Abteil(
-    1,
-    "rot",
-    {1: "alte Lady", 2: "rüstiger Mops"},
-    0.0,
-    False,
-    {1: streak_i, 2: streak_h},
-)
-abteil_2_obj = Abteil(
-    1, "rot", {1: "alte Lady", 2: "rüstiger Mops"}, 0.0, False, {1: streak_1}
-)
-
-abteil_3_obj = Abteil(
-    3,
-    "blau",
-    {1: "Lokführer"},
-    200.0,
-    True,
-    {1: streak_emergency},
-)
+abteil_1_obj=Abteil(1,"rot", {1:"alte Lady",2:"rüstiger Mops"}, 0.0, False,{1:streak_i,2:streak_h})
+abteil_2_obj=Abteil(1, "rot", {1: "alte Lady", 2: "rüstiger Mops"}, 0.0, False, {1:streak_1_2})
+abteil_3_obj = Abteil(3,"blau",{1: "Lokführer"},200.0,True,{1: streak_emergency},)
+abteil_4_obj=Abteil(1, "rot", {1: "alte Lady", 2: "rüstiger Mops"}, 0.0, False, {1:streak_1_4})

@@ -2,7 +2,6 @@ import random
 import abteil_constructor
 from main_gui import *
 
-
 def goodbye():
     app.configure(bg=bg["goodbye"])
     reassign_button(
@@ -51,7 +50,7 @@ def welcome(e=None):
     # check ob wir schon Urlaubsgeld erhalten haben
     if not len(abteil_constructor.abteil_1_obj.inventar):
         urlaubsgeld = random.randrange(90, 110)
-        abteil_constructor.abteil_1_obj.assign_inventar(urlaubsgeld)
+        abteil_constructor.abteil_1_obj.inventar.append(urlaubsgeld)
     app.configure(bg=bg["welcome"])
     text_welcome = f"""Herzlichen Glueckwunsch!\n{entry_username.get()}, du hast eine Zugfahrt im Bergland-Express im Radio-Quiz 
       gewonnen! Du hast {abteil_constructor.abteil_1_obj.inventar[0]}DM Urlaubsgeld dabei!\n\nDeine Reise beginnt am Bahnsteig Nummer 12, 
@@ -78,7 +77,6 @@ def welcome(e=None):
         lambda: abteil_constructor.abteil_1_obj.init_streak(1),
         color["welcome_button"],
     )
-
 
 entry_username.bind("<Return>", welcome)
 app.mainloop()

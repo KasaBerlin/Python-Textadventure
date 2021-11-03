@@ -1,75 +1,67 @@
 import math
-from tkinter.constants import END
-from typing_extensions import IntVar
 import abteil_constructor
 from main_gui import *
-from tkinter import IntVar
+from tkinter import IntVar,END
 
-# guessEntry = IntVar()
-guessEntry = 0
+guess_entry = IntVar()
 guesses_made = 0
 
-guessEntry = IntVar()
-guesses_made = 0
-
+def zu_abteil_4():
+    reassign_button(
+        button_current_1,
+        "Ok",
+        lambda: abteil_constructor.abteil_4_obj.init_streak(1),
+        button_current_1.config(padx=650, height=2)
+    )
 
 def kein_leckerli():
-    label_current.config(text="Du MONSTER!!!", bg=bg["abteil1_monster"])
-
-
+   label_current.config(text="Du MONSTER!!! Du wirst ins Abteil 4 verbannt!",bg=bg["abteil1_monster"])
+   zu_abteil_4() 
+   
 def leckerli():
     abteil_constructor.abteil_1_obj.inventar.remove("Leckerli")
-    label_current.config(
-        text=f"Der Mops freut sich und schlappert dir als Dank die Hand ab!",
-        bg=bg["abteil1_leckerli"],
-    )
-    print(abteil_constructor.abteil_1_obj.inventar)
+    label_current.config(text=f"""Der Mops freut sich und schlappert 
+    dir als Dank die Hand ab! Weiter gehts im Abteil 4!""",  bg=bg["abteil1_leckerli"]) 
+    zu_abteil_4() 
 
 
 def dog_quiz(e):
+    # wenn guess_entry value "" ist, assign  0 to guess_entry
+    try:guess_entry.get()
+    except:guess_entry.set(0)
+
     key_age_dog = 64
-    guess = guessEntry.get()
-    dog_year_converter = int((math.log(16) * guess) + 31)
+    dog_year_converter = int((math.log(16) * guess_entry.get()) + 31)
+    
     global guesses_made
     guesses_made += 1
-    while guesses_made < 6:
-        print(guesses_made)
-        if key_age_dog < dog_year_converter:
-            entry_current.delete(0, END)
-            label_current.config(text="Dein Tipp war zu hoch.")
 
+    if guesses_made < 6:  
+        if  key_age_dog < dog_year_converter:
+            guess_entry.set(0)
+            entry_current.delete(0, END)
+            label_current.config(text='Dein Tipp war zu hoch.')
         elif key_age_dog > dog_year_converter:
+            guess_entry.set(0)
             entry_current.delete(0, END)
-            label_current.config(text="Dein Tipp war zu niedrig.")
-
+            label_current.config(text='Dein Tipp war zu niedrig.')
         elif dog_year_converter == key_age_dog:
-            break
-    if dog_year_converter == key_age_dog:
-        entry_current.destroy()
-        label_current.config(
-            text=f"Richtig! Du hast nach {guesses_made} Tipps das Alter erraten!\nDafür erhälst du ein Leckerli in deinem Inventar! Möchtest du dein Leckerli dem Mops geben?"
-        )
-        abteil_constructor.abteil_1_obj.inventar.append("Leckerli")
-        print(abteil_constructor.abteil_1_obj.inventar)
-        reassign_button(button_current_1, "Ja", leckerli)
-        reassign_button(button_current_2, "Nein", kein_leckerli)
-    else:
-        label_current.config(
-            text=f"Leider nicht richtig geraten. Das Alter des Hundes ist {key_age_dog} Jahre alt in Menschenalter."
-        )
-
+            entry_current.destroy()
+            label_current.config(text=f"Richtig! Du hast nach {guesses_made} Tipps das Alter erraten!\nDafür erhälst du ein Leckerli in deinem Inventar! Möchtest du dein Leckerli dem Mops geben?")
+            abteil_constructor.abteil_1_obj.inventar.append("Leckerli")
+            print(abteil_constructor.abteil_1_obj.inventar)
+            reassign_button(button_current_1, "Ja", leckerli)
+            reassign_button(button_current_2, "Nein", kein_leckerli)
+    else: 
+            label_current.config(text=f'Leider nicht richtig geraten. Das Alter des Hundes ist {key_age_dog} Jahre alt in Menschenalter. Weiter gehts im Abteil 4!')  
+            zu_abteil_4() 
+    
+    
 
 def streak_b():
     app.configure(bg=bg["abteil1_speisewagen"])
-    label_current.config(
-        text="""Du findest einen Platz im Speisewagen und studierst die Karte - 
-    du brauchst erstmal was zur Beruhigung.\nWas möchtest du bestellen?""",
-        bg=bg["abteil1_speisewagen"],
-        fg=color["abteil1_speisewagen"],
-    )
-    abteil_constructor.abteil_2_obj.assign_inventar(
-        abteil_constructor.abteil_1_obj.inventar
-    )
+    label_current.config(text="""Du findest einen Platz im Speisewagen und studierst die Karte - 
+    du brauchst erstmal was zur Beruhigung.\nWas möchtest du bestellen?""",bg=bg["abteil1_speisewagen"],fg=color["abteil1_speisewagen"])
     abteil_constructor.abteil_2_obj.init_streak(1)
 
 
@@ -81,8 +73,7 @@ def streak_h(intro=False):
         )
     forget_buttons()
     entry_current.grid(padx=5, pady=10, row=2, column=1, columnspan=3)
-    entry_current.config(textvariable=guessEntry, bg=bg["abteil1_entry_intro"])
-
+    entry_current.config(textvariable=guess_entry,bg=bg["abteil1_entry_intro"])
 
 def streak_i():
     app.configure(bg=bg["abteil1_intro"])
