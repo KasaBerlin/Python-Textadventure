@@ -1,4 +1,4 @@
-from tkinter import font, PhotoImage, Label, Entry, Button, LEFT, RIGHT,Tk
+from tkinter import font, PhotoImage, Label, Entry, Button, LEFT, RIGHT, Tk
 from layout import theme
 
 app, fonts, bg = theme
@@ -8,9 +8,9 @@ app = Tk()
 app.title("Reise im Bergland-Express")
 w, h = app.winfo_screenwidth(), app.winfo_screenheight()
 app.geometry("%dx%d+0+0" % (w, h))
-# TODO grid/place buttons
 app.configure(background=bg["name"])
-
+app.rowconfigure([0, 1, 2, 3, 4], weight=1, minsize=100)
+app.columnconfigure([0, 1, 2, 3, 4], weight=1, minsize=200)
 #
 # ! ICON ???
 #
@@ -46,7 +46,9 @@ font_buttons = font.Font(family=button["family"], size=button["size"])
 
 # Bild einbinden
 current_image = PhotoImage(file="images/name.png")
-label_image = Label(image=current_image, borderwidth=0).pack(pady=30)
+label_image = Label(image=current_image, borderwidth=0).grid(
+    pady=30, row=0, column=1, columnspan=3
+)
 
 # Elemente anlegen
 label_current = Label(
@@ -55,7 +57,7 @@ label_current = Label(
     background=bg["name"],
     fg=color["name"],
 )
-label_current.pack(pady=20)
+label_current.grid(pady=20, row=1, column=1, columnspan=3)
 label_current.configure(font=font_texts)
 
 entry_username = Entry(
@@ -65,9 +67,9 @@ entry_username = Entry(
     font=font_entry,
     borderwidth=0,
 )
-entry_username.pack(padx=5, pady=10)
-# TODO text_username = entry_current
-entry_current=Entry(app)
+entry_username.grid(padx=5, pady=10, row=2, column=1, columnspan=3)
+
+entry_current = Entry(app)
 
 button_current_1 = Button(
     app,
@@ -85,15 +87,19 @@ button_current_2 = Button(
     borderwidth=0,
 )
 
+
 def forget_buttons():
-    button_current_1.forget()
-    button_current_2.forget()
+    button_current_1.grid_forget()
+    button_current_2.grid_forget()
+
+
 # TODO bitte beachten Parameter umgedreht
-def reassign_button(button, text, command,fg=None):
+def reassign_button(button, text, command, fg=None):
     button["text"] = text
     button["fg"] = fg
     button["command"] = command
-    button.pack(padx=350, side=LEFT if button == button_current_1 else RIGHT)
+    button_current_1.grid(row=3, column=1)
+    button_current_2.grid(row=3, column=3)
 
 
 # ! mainloop befindet sich in welcome_gui
