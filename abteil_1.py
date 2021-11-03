@@ -1,9 +1,13 @@
 import math
 from tkinter.constants import END
+from typing_extensions import IntVar
 import abteil_constructor
 from main_gui import *
 from tkinter import IntVar
 
+# guessEntry = IntVar()
+guessEntry = 0
+guesses_made = 0
 
 guessEntry = IntVar()
 guesses_made = 0
