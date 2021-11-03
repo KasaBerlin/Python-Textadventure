@@ -52,14 +52,15 @@ def dog_quiz(e):
             print(abteil_constructor.abteil_1_obj.inventar)
             reassign_button(button_current_1, "Ja", leckerli)
             reassign_button(button_current_2, "Nein", kein_leckerli)
-    else: 
-            label_current.config(text=f'Leider nicht richtig geraten. Das Alter des Hundes ist {key_age_dog} Jahre alt in Menschenalter. Weiter gehts im Abteil 4!')  
+    if guesses_made == 6 and dog_year_converter != key_age_dog: 
+            label_current.config(text=f"""Leider nicht richtig geraten.\nDas Alter des Hundes ist {key_age_dog} Jahre alt in Menschenalter.\nWeiter gehts im Abteil 4!""")  
             zu_abteil_4() 
     
     
 
 def streak_b():
     app.configure(bg=bg["abteil1_speisewagen"])
+    forget_buttons()
     label_current.config(text="""Du findest einen Platz im Speisewagen und studierst die Karte - 
     du brauchst erstmal was zur Beruhigung.\nWas möchtest du bestellen?""",bg=bg["abteil1_speisewagen"],fg=color["abteil1_speisewagen"])
     abteil_constructor.abteil_2_obj.init_streak(1)

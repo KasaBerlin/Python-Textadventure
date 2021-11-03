@@ -37,7 +37,7 @@ def zu_abteil_1():
     getraenke.destroy()
     speisen.destroy()
     label_current.config(
-        text="""Du kehst zu deinem Platz zurück. Die Alte Lady mit dem Mops lächelt dich 
+        text="""Du kehrst zu deinem Platz zurück.\nDie Alte Lady mit dem Mops lächelt dich 
     nett an und fragt dich, ob du sein wahres Alter erraten kannst."""
     )
     abteil_constructor.abteil_1_obj.init_streak(2)

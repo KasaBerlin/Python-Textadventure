@@ -98,13 +98,12 @@ def reassign_button(button, text, command, fg=None):
     button["text"] = text
     button["fg"] = fg
     button["command"] = command
-    button_current_1.grid(row=3, column=1)
-    button_current_2.grid(row=3, column=3)
+    button.grid(row=3, column=1 if button == button_current_1 else 3)
 
 
 def forget_buttons():
-    button_current_1.forget
-    button_current_2.forget
+    button_current_1.grid_forget()
+    button_current_2.grid_forget()
 
 
 # ! mainloop befindet sich in welcome_gui
