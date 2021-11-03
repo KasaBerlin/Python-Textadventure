@@ -66,7 +66,6 @@ entry_username = Entry(
     borderwidth=0,
 )
 entry_username.pack(padx=5, pady=10)
-# TODO text_username = entry_current
 entry_current=Entry(app)
 
 button_current_1 = Button(
@@ -88,7 +87,8 @@ button_current_2 = Button(
 def forget_buttons():
     button_current_1.forget()
     button_current_2.forget()
-# TODO bitte beachten Parameter umgedreht
+
+
 def reassign_button(button, text, command,fg=None):
     button["text"] = text
     button["fg"] = fg
