@@ -30,22 +30,33 @@ speisen = ttk.Combobox(
 )
 speisen.set("wähle aus")
 
-
 def zu_abteil_1():
     label_getraenke.destroy()
     label_speisen.destroy()
     getraenke.destroy()
     speisen.destroy()
-    label_current.config(
-        text="""Du kehrst zu deinem Platz zurück.\nDie Alte Lady mit dem Mops lächelt dich 
-    nett an und fragt dich, ob du sein wahres Alter erraten kannst."""
-    )
-    abteil_constructor.abteil_1_obj.init_streak(2)
+    abteil_constructor.abteil_1_obj.init_streak(2,2)
 
 def auswahlcheck(speisen_auswahl,getraenke_auswahl):
     check1=speisekarte["Getraenke"][getraenke_auswahl.get()] if getraenke_auswahl.get() in speisekarte["Getraenke"].keys() else 0 
     check2=speisekarte["Speisen"][speisen_auswahl.get()] if speisen_auswahl.get() in speisekarte["Speisen"].keys() else 0 
     return check1+check2
+    
+def streak_2_1():
+    # TODO app.configure key Umbenennung
+    app.configure(bg=bg["abteil1_speisewagen"])
+    label_current.config(text="""Du findest einen Platz im Speisewagen und studierst die Karte - 
+    du brauchst erstmal was zur Beruhigung.\nWas möchtest du bestellen?""",bg=bg["abteil1_speisewagen"],fg=color["abteil1_speisewagen"])
+    label_getraenke.grid(pady=10, row=2, column=1, sticky="ne")
+    label_getraenke.config(
+        font=font_texts, bg=bg["abteil1_speisewagen"], fg=color["abteil1_speisewagen"]
+    )
+    getraenke.grid(pady=10, row=2, column=1, sticky="e")
+    label_speisen.grid(pady=10, row=2, column=3, sticky="nw")
+    label_speisen.config(
+        font=font_texts, bg=bg["abteil1_speisewagen"], fg=color["abteil1_speisewagen"]
+    )
+    speisen.grid(pady=10, row=2, column=3, sticky="w")
 
 def bestellen(e):
     bezahlung=abteil_constructor.abteil_1_obj.inventar[0] - auswahlcheck(speisen_auswahl,getraenke_auswahl)
@@ -53,7 +64,7 @@ def bestellen(e):
         abteil_constructor.abteil_1_obj.inventar[0] = bezahlung
         label_current.config(text=f"""Du hast jetzt noch {abteil_constructor.abteil_1_obj.inventar[0]} DM im Inventar.\n 
         Der Kellner fragt dich, ob du noch etwas bestellen möchtest?""")
-        reassign_button(button_current_1, "Ja", streak_1)
+        reassign_button(button_current_1, "Ja", streak_2_1)
         reassign_button(button_current_2, "Nein", zu_abteil_1)
         button_current_1.config(width=10)
         button_current_2.config(width=10)
@@ -67,18 +78,6 @@ def bestellen(e):
         button_current_1.config(padx=650, height=2)
     )
     
-def streak_1():
-    forget_buttons()
-    label_getraenke.grid(pady=10, row=2, column=1, sticky="ne")
-    label_getraenke.config(
-        font=font_texts, bg=bg["abteil1_speisewagen"], fg=color["abteil1_speisewagen"]
-    )
-    getraenke.grid(pady=10, row=2, column=1, sticky="e")
-    label_speisen.grid(pady=10, row=2, column=3, sticky="nw")
-    label_speisen.config(
-        font=font_texts, bg=bg["abteil1_speisewagen"], fg=color["abteil1_speisewagen"]
-    )
-    speisen.grid(pady=10, row=2, column=3, sticky="w")
 
 getraenke.bind('<Return>', bestellen)
 speisen.bind('<Return>', bestellen)

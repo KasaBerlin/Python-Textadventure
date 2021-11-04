@@ -7,7 +7,6 @@ directions = ["Left", "Right", "Up", "Down"]
 entry_direction = Entry(app)
 label_counter = Label(app)
 
-
 def racing_train_game(e):
     global entry_direction
     label_counter.config(
@@ -31,7 +30,6 @@ def racing_train_game(e):
     else:
         label_current.config(text="Sehr gut. Der Zug fährt wieder normal")
 
-
 def racing_train_starter():
     app.configure(background=bg["abteil3_directions"])
     entry_direction.pack(pady=30)
@@ -52,7 +50,7 @@ entry_direction.bind("<Up>", racing_train_game)
 entry_direction.bind("<Down>", racing_train_game)
 
 
-def streak_emergency():
+def streak_3_1():
     app.configure(background=bg["abteil3_intro"])
     label_current.configure(font=font_texts_bold)
     text_emergency = """Der Lokführer kommt panisch auf dich zu gerannt und bittet um deine Hilfe.\n
