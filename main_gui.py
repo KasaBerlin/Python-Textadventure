@@ -22,7 +22,6 @@ app.columnconfigure([0, 1, 2, 3, 4], weight=1, minsize=200)
 
 
 normal = fonts["text"]
-bold = fonts["text_bold"]
 large = fonts["text_large"]
 gratulations = fonts["gratulations"]
 entry = fonts["entry"]
@@ -31,11 +30,6 @@ color = fonts["color"]
 
 # FONTS anlegen
 font_texts = font.Font(family=normal["family"], size=normal["size"])
-font_texts_bold = font.Font(
-    family=bold["family"],
-    size=bold["size"],
-    weight=bold["weight"],
-)
 font_texts_large = font.Font(family=large["family"], size=large["size"])
 font_gratulations = font.Font(family=gratulations["family"], size=gratulations["size"])
 font_entry = font.Font(
@@ -96,14 +90,13 @@ def reassign_button(button, text, command, fg=None):
     button["command"] = command
     button.grid(row=3, column=1 if button == button_current_1 else 3)
 
-<<<<<<< HEAD
 
 def forget_buttons():
     button_current_1.grid_forget()
     button_current_2.grid_forget()
 
 
-def resize(e):
+""" def resize(e):
     height = label_current.winfo_height()
     width = label_current.winfo_width()
     height = height // 2
@@ -123,7 +116,5 @@ def resize(e):
     print(font_texts.actual())
 
 
-app.bind("<Configure>", resize)
-=======
->>>>>>> c12d30fb85cc1d645061673bab147eace857738e
+app.bind("<Configure>", resize) """
 # ! mainloop befindet sich in welcome_gui

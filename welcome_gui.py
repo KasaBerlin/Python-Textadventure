@@ -2,6 +2,7 @@ import random
 import abteil_constructor
 from main_gui import *
 
+
 def goodbye():
     app.configure(bg=bg["goodbye"])
     reassign_button(
@@ -27,7 +28,7 @@ def paar_beobachten():
     text_streak_b = """Die beiden verlassen den Bahnhof.\n\nDu verpasst deinen Zug und dein
     toller Gewinn verfällt...\nWillst du noch einmal von vorn beginnen?"""
     label_current.config(
-        text=text_streak_b, bg=bg["exit"], fg=color["exit"], pady=83, font=font_texts
+        text=text_streak_b, bg=bg["exit"], fg=color["exit"], pady=60, font=font_texts
     )
 
     current_image.configure(file="images/exit.png")
@@ -77,6 +78,7 @@ def welcome(e=None):
         lambda: abteil_constructor.abteil_1_obj.init_streak(1),
         color["welcome_button"],
     )
+
 
 entry_username.bind("<Return>", welcome)
 app.mainloop()
