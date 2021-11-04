@@ -81,7 +81,7 @@ def dog_quiz(e):
     if guesses_made == 6 and dog_year_converter != key_age_dog:
         label_current.config(
             text=f"""Leider nicht richtig geraten.\nDas Alter des Hundes ist {key_age_dog} 
-            Jahre alt in Menschenalter.\nWeiter gehts im Abteil 4!"""
+            Jahre alt in Menschenalter.\nDu ärgerst dich ein wenig.\n{katze}"""
         )
         zu_abteil_4(1)
 
