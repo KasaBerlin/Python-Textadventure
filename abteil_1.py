@@ -16,54 +16,74 @@ def zu_abteil_4(streak):
         button_current_1,
         "Ok",
         lambda: abteil_constructor.abteil_4_obj.init_streak(streak),
-        button_current_1.config(padx=650, height=2)
     )
+    button_current_1.grid(padx=60, row=3, column=2)
+    button_current_1.config(height=2)
+
 
 def zu_abteil_2(streak):
     forget_buttons()
     abteil_constructor.abteil_2_obj.init_streak(streak)
 
+
 def kein_leckerli():
-   label_current.config(text=f"""Du schaut traurig als er sieht dass das Leckerli 
-   in der Tasche verschwindet.\nJetzt hast du ein schlechtes Gewissen.\n{katze}""",bg=bg["abteil1_monster"])
-   zu_abteil_4(1) 
+    app.configure(bg=bg["abteil1_monster"])
+    current_image.configure(file="images/monster.png")
+    label_current.config(text=f"""Du schaut traurig als er sieht dass das Leckerli 
+    in der Tasche verschwindet.\nJetzt hast du ein schlechtes Gewissen.\n{katze}""",        
+            bg=bg["abteil1_monster"],
+            fg=color["abteil1_monster"],
+            font=font_texts_large,)
+    zu_abteil_4(1) 
    
 def leckerli():
+    app.configure(bg=bg["abteil1_leckerli"])
     abteil_constructor.abteil_1_obj.inventar.remove("Leckerli")
     label_current.config(text=f"""Der Mops freut sich und schlappert 
-    dir als Dank die Hand ab!\n{katze}""",  bg=bg["abteil1_leckerli"]) 
+    dir als Dank die Hand ab!\n{katze}""",
+    bg=bg["abteil1_leckerli"],
+    fg=color["abteil1_leckerli"],) 
     zu_abteil_4(1) 
 
 def dog_quiz(e):
     # wenn guess_entry value "" ist, assign  0 to guess_entry
-    try:guess_entry.get()
-    except:guess_entry.set(0)
+    try:
+        guess_entry.get()
+    except:
+        guess_entry.set(0)
 
     key_age_dog = 64
     dog_year_converter = int((math.log(16) * guess_entry.get()) + 31)
-    
+
     global guesses_made
     guesses_made += 1
 
-    if guesses_made < 6:  
-        if  key_age_dog < dog_year_converter:
+    if guesses_made < 6:
+        if key_age_dog < dog_year_converter:
             entry_current.delete(0, END)
-            label_current.config(text='Dein Tipp war zu hoch.')
+            label_current.config(text="Dein Tipp war zu hoch.")
         elif key_age_dog > dog_year_converter:
             entry_current.delete(0, END)
-            label_current.config(text='Dein Tipp war zu niedrig.')
+            label_current.config(text="Dein Tipp war zu niedrig.")
         elif dog_year_converter == key_age_dog:
             entry_current.destroy()
-            label_current.config(text=f"""Richtig! Du hast nach {guesses_made} Tipps das Alter erraten!\nDafür 
-            erhälst du ein Leckerli in deinem Inventar!\nMöchtest du dein Leckerli dem Mops geben?""")
+            label_current.config(
+                text=f"""Richtig! Du hast nach {guesses_made} Tipps das Alter erraten!\nDafür 
+            erhälst du ein Leckerli in deinem Inventar!\nMöchtest du dein Leckerli dem Mops geben?"""
+            )
             abteil_constructor.abteil_1_obj.inventar.append("Leckerli")
             print(abteil_constructor.abteil_1_obj.inventar)
             reassign_button(button_current_1, "Ja", leckerli)
             reassign_button(button_current_2, "Nein", kein_leckerli)
-    if guesses_made == 6 and dog_year_converter != key_age_dog: 
-            label_current.config(text=f"""Leider nicht richtig geraten.\nDas Alter des Hundes ist {key_age_dog} 
-            Jahre alt in Menschenalter.\nWeiter gehts im Abteil 4!""")  
-            zu_abteil_4(1)    
+            button_current_1.config(width=10)
+            button_current_2.config(width=10)
+    if guesses_made == 6 and dog_year_converter != key_age_dog:
+        label_current.config(
+            text=f"""Leider nicht richtig geraten.\nDas Alter des Hundes ist {key_age_dog} 
+            Jahre alt in Menschenalter.\nWeiter gehts im Abteil 4!"""
+        )
+        zu_abteil_4(1)
+
 
 def streak_1_3():
     label_current.config("""Endlich wieder in Sicherheit. Du schaust aus dem Fenster,
@@ -78,20 +98,26 @@ def streak_1_3():
     button_current_1.config(height=2)
 
 def streak_1_2(intro):
+    current_image.configure(file="images/dog_quiz.png")
+
     if intro == 1:
         label_current.config(
-        text="""Sie antwortet freundlich das er noch recht rüstig ist für sein Alter 
-        und gibt ihm ein Leckerli.\nSie fragt dich, ob du sein Alter erraten kannst? Gib einen Tipp ab:""")
-    elif intro == 2 :   
+            text="""Sie antwortet freundlich das er noch recht rüstig ist für sein Alter 
+        und gibt ihm ein Leckerli.\nSie fragt dich, ob du sein Alter erraten kannst? Gib einen Tipp ab:"""
+        )
+    elif intro == 2:
         label_current.config(
-        text="""Du kehrst zu deinem Platz zurück.\nDie Alte Lady mit dem Mops lächelt dich 
-        nett an und fragt dich, ob du sein wahres Alter erraten kannst.""")
+            text="""Du kehrst zu deinem Platz zurück.\nDie Alte Lady mit dem Mops lächelt dich 
+        nett an und fragt dich, ob du sein wahres Alter erraten kannst."""
+        )
     forget_buttons()
     entry_current.grid(padx=5, pady=10, row=2, column=1, columnspan=3)
-    entry_current.config(textvariable=guess_entry,bg=bg["abteil1_entry_intro"])
+    entry_current.config(textvariable=guess_entry, bg=bg["abteil1_entry_intro"])
+
 
 def streak_1_1():
     app.configure(bg=bg["abteil1_intro"])
+    current_image.configure(file="images/abteil_1.png")
 
     label_current.config(
         text="""Im Zug lässt du dich auf deinem Sitzplatz nieder und schaust dich um.\nDie Sitze sind mit dunkelrotem Samt
