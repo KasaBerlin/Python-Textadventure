@@ -2,9 +2,13 @@ import math
 import abteil_constructor
 from main_gui import *
 from tkinter import IntVar,END
-import inspect
+
 guess_entry = IntVar()
 guesses_made = 0
+
+katze="""Auf einmal mauzt dich irgendetwas von der Seite an.\nEhe du sie steicheln kannst, 
+sieht du schon, wie ein Katzenschwanz im nächsten Abteil verschwindet.\n
+Du fragst dich was die Katze von dir will und folgst ihr."""
 
 def zu_abteil_4(streak):
     forget_buttons()
@@ -20,13 +24,14 @@ def zu_abteil_2(streak):
     abteil_constructor.abteil_2_obj.init_streak(streak)
 
 def kein_leckerli():
-   label_current.config(text="Du MONSTER!!! Du wirst ins Abteil 4 verbannt!",bg=bg["abteil1_monster"])
+   label_current.config(text=f"""Du schaut traurig als er sieht dass das Leckerli 
+   in der Tasche verschwindet.\nJetzt hast du ein schlechtes Gewissen.\n{katze}""",bg=bg["abteil1_monster"])
    zu_abteil_4(1) 
    
 def leckerli():
     abteil_constructor.abteil_1_obj.inventar.remove("Leckerli")
     label_current.config(text=f"""Der Mops freut sich und schlappert 
-    dir als Dank die Hand ab! Weiter gehts im Abteil 4!""",  bg=bg["abteil1_leckerli"]) 
+    dir als Dank die Hand ab!\n{katze}""",  bg=bg["abteil1_leckerli"]) 
     zu_abteil_4(1) 
 
 def dog_quiz(e):
@@ -59,6 +64,18 @@ def dog_quiz(e):
             label_current.config(text=f"""Leider nicht richtig geraten.\nDas Alter des Hundes ist {key_age_dog} 
             Jahre alt in Menschenalter.\nWeiter gehts im Abteil 4!""")  
             zu_abteil_4(1)    
+
+def streak_1_3():
+    label_current.config("""Endlich wieder in Sicherheit. Du schaust aus dem Fenster,
+    unterhälst dich mit der alten Lady und genießt die Reise.""")
+    reassign_button(
+        button_current_1,
+        "Spiel beenden",
+        app.destroy,
+        color["goodbye_button"],
+    )
+    button_current_1.grid(padx=60, row=3, column=2)
+    button_current_1.config(height=2)
 
 def streak_1_2(intro):
     if intro == 1:

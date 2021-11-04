@@ -88,7 +88,6 @@ button_current_2 = Button(
     borderwidth=0,
 )
 
-
 def forget_buttons():
     button_current_1.grid_forget()
     button_current_2.grid_forget()

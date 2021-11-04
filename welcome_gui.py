@@ -21,7 +21,6 @@ def goodbye():
     )
     current_image.configure(file="images/goodbye.png")
 
-
 def paar_beobachten():
     app.configure(bg=bg["exit"])
     text_streak_b = """Die beiden verlassen den Bahnhof.\n\nDu verpasst deinen Zug und dein
@@ -44,7 +43,6 @@ def paar_beobachten():
         goodbye,
         color["exit_button"],
     )
-
 
 def welcome(e=None):
     # check ob wir schon Urlaubsgeld erhalten haben
@@ -77,6 +75,7 @@ def welcome(e=None):
         lambda: abteil_constructor.abteil_1_obj.init_streak(1),
         color["welcome_button"],
     )
+
 
 entry_username.bind("<Return>", welcome)
 app.mainloop()
