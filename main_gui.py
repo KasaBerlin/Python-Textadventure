@@ -1,8 +1,8 @@
 from tkinter import font, PhotoImage, Label, Entry, Button, LEFT, RIGHT, END, Tk
 from layout import theme
 
-app, fonts, bg = theme
 
+app, fonts, bg = theme
 # tkinter-window mit Titel und Größe erzeugen
 app = Tk()
 app.title("Reise im Bergland-Express")
@@ -19,6 +19,7 @@ app.columnconfigure([0, 1, 2, 3, 4], weight=1, minsize=200)
 # app.iconbitmap("feier_icon.icns")
 
 # ! ICON - wird noch nicht angezeigt
+
 
 normal = fonts["text"]
 bold = fonts["text_bold"]
@@ -99,11 +100,5 @@ def reassign_button(button, text, command, fg=None):
     button["fg"] = fg
     button["command"] = command
     button.grid(row=3, column=1 if button == button_current_1 else 3)
-
-
-def forget_buttons():
-    button_current_1.grid_forget()
-    button_current_2.grid_forget()
-
 
 # ! mainloop befindet sich in welcome_gui

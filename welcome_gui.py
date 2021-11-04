@@ -22,7 +22,7 @@ def goodbye():
     current_image.configure(file="images/goodbye.png")
 
 
-def streak_b():
+def paar_beobachten():
     app.configure(bg=bg["exit"])
     text_streak_b = """Die beiden verlassen den Bahnhof.\n\nDu verpasst deinen Zug und dein
     toller Gewinn verfällt...\nWillst du noch einmal von vorn beginnen?"""
@@ -55,7 +55,7 @@ def welcome(e=None):
     text_welcome = f"""Herzlichen Glueckwunsch!\n{entry_username.get()}, du hast eine Zugfahrt im Bergland-Express im Radio-Quiz 
       gewonnen! Du hast {abteil_constructor.abteil_1_obj.inventar[0]}DM Urlaubsgeld dabei!\n\nDeine Reise beginnt am Bahnsteig Nummer 12, 
       wo du auf ein seltsames Paar aufmerksam wirst.\nWas tust du?"""
-    entry_username.grid_forget()
+    entry_username.destroy()
     label_current.config(
         text=text_welcome,
         bg=bg["welcome"],
@@ -68,7 +68,7 @@ def welcome(e=None):
     reassign_button(
         button_current_1,
         "Beobachten",
-        streak_b,
+        paar_beobachten,
         color["welcome_button"],
     )
     reassign_button(
