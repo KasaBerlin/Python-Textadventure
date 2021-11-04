@@ -88,11 +88,6 @@ button_current_2 = Button(
 )
 
 
-def forget_buttons():
-    button_current_1.grid_forget()
-    button_current_2.grid_forget()
-
-
 # TODO bitte beachten Parameter umgedreht
 def reassign_button(button, text, command, fg=None):
     button["text"] = text
@@ -106,4 +101,25 @@ def forget_buttons():
     button_current_2.grid_forget()
 
 
+def resize(e):
+    height = label_current.winfo_height()
+    width = label_current.winfo_width()
+    height = height // 2
+    print("height %s" % height)
+    print("width %s" % width)
+    if height < 10 or width < 200:
+        height = 10
+    elif width < 400 and height > 20:
+        height = 20
+    elif width < 600 and height > 30:
+        height = 30
+    else:
+        height = 40
+    print("height %s" % height)
+
+    font_texts["size"] = height
+    print(font_texts.actual())
+
+
+app.bind("<Configure>", resize)
 # ! mainloop befindet sich in welcome_gui
