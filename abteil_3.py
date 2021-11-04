@@ -2,7 +2,6 @@ from tkinter import messagebox
 from main_gui import *
 import random
 import abteil_constructor
-from abteil_1 import zu_abteil_4
 
 directions = ["Left", "Right", "Up", "Down"]
 entry_direction = Entry(app)
@@ -39,7 +38,7 @@ def racing_train_game(e):
     else:
         current_image.configure(file="images/racing.png")
         label_current.config(text="Sehr gut. Der Zug fährt wieder normal")
-        reassign_button(button_current_1, "Weiter", zu_abteil_4(1))
+        reassign_button(button_current_1, "Weiter", abteil_constructor.abteil_1_obj.init_streak(2))
         button_current_1.grid(padx=60, row=3, column=2)
         button_current_1.config(height=2)
 

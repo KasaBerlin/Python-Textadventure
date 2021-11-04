@@ -11,6 +11,7 @@ sieht du schon, wie ein Katzenschwanz im nächsten Abteil verschwindet.\n
 Du fragst dich was die Katze von dir will und folgst ihr."""
 
 def zu_abteil_4(streak):
+    entry_current.forget()
     forget_buttons()
     reassign_button(
         button_current_1,

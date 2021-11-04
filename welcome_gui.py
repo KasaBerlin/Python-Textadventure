@@ -2,7 +2,6 @@ import random
 import abteil_constructor
 from main_gui import *
 
-
 def goodbye():
     app.configure(bg=bg["goodbye"])
     reassign_button(
