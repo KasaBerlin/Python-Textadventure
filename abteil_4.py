@@ -12,6 +12,7 @@ def destroy_zahlenschloss():
 
 
 def koffer_offen():
+    forget_buttons()
     label_current.config(
         text="""Richtig geraten! Als du in den Koffer öffnest fällt dir ein Foto in die Hände.\n
     Darauf ist eine Katzenfamilie zu sehen.\nDie Katze, die dich hergeführt hast ist anscheinend mit auf dem Bild.\n
