@@ -5,6 +5,7 @@ import abteil_constructor
 
 directions = ["Left", "Right", "Up", "Down"]
 entry_direction = Entry(app)
+entry_direction.focus()
 label_speed = Label(app)
 
 
@@ -40,7 +41,11 @@ def racing_train_game(e):
         label_speed.destroy()
         current_image.configure(file="images/racing.png")
         label_current.config(text="Sehr gut. Der Zug fährt wieder normal")
-        reassign_button(button_current_1, "Weiter", lambda:abteil_constructor.abteil_1_obj.init_streak(3))
+        reassign_button(
+            button_current_1,
+            "Weiter",
+            lambda: abteil_constructor.abteil_1_obj.init_streak(3),
+        )
         button_current_1.grid(padx=60, row=3, column=2)
         button_current_1.config(height=2)
 
