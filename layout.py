@@ -36,8 +36,9 @@ fonts = {
         "abteil3_entry_racing": "#4287F5",
         "abteil4_dunkel": "#6b6b6b",
         "abteil4_button_dunkel": "#050712",
-        "abteil4_hell": "#fccf81",
+        "abteil4_hell": "#1c1506",
         "abteil4_button_hell": "#423519",
+        "abteil4_button_koffer": "#663006",
     },
 }
 
@@ -58,6 +59,7 @@ bg = {
     "abteil3_entry_racing": "#174a4a",
     "abteil4_dunkel": "#050712",
     "abteil4_hell": "#fccf81",
+    "abteil4_koffer": "#663006",
 }
 
 theme = [app, fonts, bg]

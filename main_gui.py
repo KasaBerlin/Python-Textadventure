@@ -11,7 +11,8 @@ app.geometry("%dx%d+0+0" % (w, h))
 app.configure(background=bg["name"])
 app.rowconfigure([0, 1, 2, 3, 4], weight=1, minsize=100)
 app.columnconfigure([0, 1, 2, 3, 4], weight=1, minsize=200)
-#
+
+# TODO Icon einbinden
 # ! ICON ???
 #
 # icon = PhotoImage(file="feier_icon.gif")
@@ -82,7 +83,7 @@ button_current_2 = Button(
     borderwidth=0,
 )
 
-# TODO bitte beachten Parameter umgedreht
+
 def reassign_button(button, text, command, fg=None):
     button["text"] = text
     button["fg"] = fg
@@ -95,6 +96,7 @@ def forget_buttons():
     button_current_2.grid_forget()
 
 
+# TODO : responsive Schrift einbauen
 """ def resize(e):
     height = label_current.winfo_height()
     width = label_current.winfo_width()

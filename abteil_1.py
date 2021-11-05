@@ -1,14 +1,15 @@
 import math
 import abteil_constructor
 from main_gui import *
-from tkinter import IntVar,END
+from tkinter import IntVar, END
 
 guess_entry = IntVar()
 guesses_made = 0
 
-katze="""Auf einmal mauzt dich irgendetwas von der Seite an.\nEhe du sie steicheln kannst, 
-sieht du schon, wie ein Katzenschwanz im nächsten Abteil verschwindet.\n
+katze = """Auf einmal mauzt dich irgendetwas von der Seite an.\nEhe du sie steicheln kannst, 
+sieht du schon, wie ein Katzenschwanz im nächsten Abteil verschwindet.\n\n
 Du fragst dich was die Katze von dir will und folgst ihr."""
+
 
 def zu_abteil_4(streak):
     forget_buttons()
@@ -29,21 +30,26 @@ def zu_abteil_2(streak):
 def kein_leckerli():
     app.configure(bg=bg["abteil1_monster"])
     current_image.configure(file="images/monster.png")
-    label_current.config(text=f"""Du schaut traurig als er sieht dass das Leckerli 
-    in der Tasche verschwindet.\nJetzt hast du ein schlechtes Gewissen.\n{katze}""",        
-            bg=bg["abteil1_monster"],
-            fg=color["abteil1_monster"],
-            font=font_texts_large,)
-    zu_abteil_4(1) 
-   
+    label_current.config(
+        text=f"""Er guckt sehr traurig als er sieht, dass das Leckerli 
+    in der Tasche verschwindet.\nJetzt hast du ein schlechtes Gewissen.\n\n{katze}""",
+        bg=bg["abteil1_monster"],
+        fg=color["abteil1_monster"],
+    )
+    zu_abteil_4(1)
+
+
 def leckerli():
     app.configure(bg=bg["abteil1_leckerli"])
     abteil_constructor.abteil_1_obj.inventar.remove("Leckerli")
-    label_current.config(text=f"""Der Mops freut sich und schlappert 
-    dir als Dank die Hand ab!\n{katze}""",
-    bg=bg["abteil1_leckerli"],
-    fg=color["abteil1_leckerli"],) 
-    zu_abteil_4(1) 
+    label_current.config(
+        text=f"""Der Mops freut sich und schlappert 
+    dir als Dank die Hand ab!\n\n{katze}""",
+        bg=bg["abteil1_leckerli"],
+        fg=color["abteil1_leckerli"],
+    )
+    zu_abteil_4(1)
+
 
 def dog_quiz(e):
     # wenn guess_entry value "" ist, assign  0 to guess_entry
@@ -88,8 +94,10 @@ def dog_quiz(e):
 
 def streak_1_3():
     forget_buttons()
-    label_current.config(text="""Endlich wieder in Sicherheit. Du schaust aus dem Fenster,
-    unterhälst dich mit der alten Lady und genießt die Reise.""")
+    label_current.config(
+        text="""Endlich wieder in Sicherheit. Du schaust aus dem Fenster,
+    unterhälst dich mit der alten Lady und genießt die Reise."""
+    )
     reassign_button(
         button_current_1,
         "Spiel beenden",
@@ -98,6 +106,7 @@ def streak_1_3():
     )
     button_current_1.grid(padx=60, row=3, column=2)
     button_current_1.config(height=2)
+
 
 def streak_1_2(intro):
     current_image.configure(file="images/dog_quiz.png")
