@@ -30,8 +30,8 @@ def racing_train_game(e):
                 label_current.config(
                     text="Der Zug ist entgleist. Es gibt viele Tote und Verletzte..."
                 )
-                entry_direction.destroy
-                label_speed.destroy
+                entry_direction.destroy()
+                label_speed.destroy()
                 reassign_button(button_current_1, "Beenden", app.destroy)
                 button_current_1.grid(padx=60, row=3, column=2)
                 button_current_1.config(height=2)

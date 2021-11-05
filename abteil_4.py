@@ -111,11 +111,14 @@ def gepaeckwagen_ade():
     Die Katze mauzt dich noch mehrmals an.\n
     Du ignorierst es und beschließt wieder ins Abteil 1 zurück zu gehen."""
     )
+    forget_buttons()
     reassign_button(
-        button_current_2,
+        button_current_1,
         "Zurück zu Abteil 1",
         lambda: abteil_constructor.abteil_1_obj.init_streak(3),
     )
+    button_current_1.grid(padx=60, row=3, column=2)
+    button_current_1.config(height=2)
 
 
 def koffer():

@@ -43,6 +43,9 @@ def paar_beobachten():
         goodbye,
         color["exit_button"],
     )
+def zu_abteil_1():
+    entry_username.destroy()
+    abteil_constructor.abteil_1_obj.init_streak(1)
 
 def welcome(e=None):
     # check ob wir schon Urlaubsgeld erhalten haben
@@ -53,7 +56,7 @@ def welcome(e=None):
     text_welcome = f"""Herzlichen Glueckwunsch!\n{entry_username.get()}, du hast eine Zugfahrt im Bergland-Express im Radio-Quiz 
       gewonnen! Du hast {abteil_constructor.abteil_1_obj.inventar[0]}DM Urlaubsgeld dabei!\n\nDeine Reise beginnt am Bahnsteig Nummer 12, 
       wo du auf ein seltsames Paar aufmerksam wirst.\nWas tust du?"""
-    entry_username.destroy()
+    entry_username.grid_forget()
     label_current.config(
         text=text_welcome,
         bg=bg["welcome"],
@@ -61,7 +64,6 @@ def welcome(e=None):
         pady=0,
         font=font_gratulations,
     )
-
     current_image.configure(file="images/welcome.png")
     reassign_button(
         button_current_1,
@@ -72,7 +74,7 @@ def welcome(e=None):
     reassign_button(
         button_current_2,
         "Ignorieren",
-        lambda: abteil_constructor.abteil_1_obj.init_streak(1),
+        zu_abteil_1,
         color["welcome_button"],
     )
 

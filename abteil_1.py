@@ -93,11 +93,13 @@ def dog_quiz(e):
 
 
 def streak_1_3():
+    app.configure(bg=bg["abteil1_intro"])
+    current_image.configure(file="images/abteil_1.png")
     forget_buttons()
     label_current.config(
         text="""Endlich wieder in Sicherheit. Du schaust aus dem Fenster,
     unterhälst dich mit der alten Lady und genießt die Reise."""
-    )
+    ,bg=bg["abteil1_intro"])
     reassign_button(
         button_current_1,
         "Spiel beenden",
@@ -110,7 +112,6 @@ def streak_1_3():
 
 def streak_1_2(intro):
     current_image.configure(file="images/dog_quiz.png")
-
     if intro == 1:
         label_current.config(
             text="""Sie antwortet freundlich das er noch recht rüstig ist für sein Alter 
@@ -124,6 +125,7 @@ def streak_1_2(intro):
     forget_buttons()
     entry_current.grid(padx=5, pady=10, row=2, column=1, columnspan=3)
     entry_current.config(textvariable=guess_entry, bg=bg["abteil1_entry_intro"])
+    entry_current.focus()
 
 
 def streak_1_1():
