@@ -11,7 +11,6 @@ sieht du schon, wie ein Katzenschwanz im nächsten Abteil verschwindet.\n
 Du fragst dich was die Katze von dir will und folgst ihr."""
 
 def zu_abteil_4(streak):
-    entry_current.forget()
     forget_buttons()
     reassign_button(
         button_current_1,
@@ -79,6 +78,7 @@ def dog_quiz(e):
             button_current_1.config(width=10)
             button_current_2.config(width=10)
     if guesses_made == 6 and dog_year_converter != key_age_dog:
+        entry_current.destroy()
         label_current.config(
             text=f"""Leider nicht richtig geraten.\nDas Alter des Hundes ist {key_age_dog} 
             Jahre alt in Menschenalter.\nDu ärgerst dich ein wenig.\n{katze}"""
@@ -87,7 +87,8 @@ def dog_quiz(e):
 
 
 def streak_1_3():
-    label_current.config("""Endlich wieder in Sicherheit. Du schaust aus dem Fenster,
+    forget_buttons()
+    label_current.config(text="""Endlich wieder in Sicherheit. Du schaust aus dem Fenster,
     unterhälst dich mit der alten Lady und genießt die Reise.""")
     reassign_button(
         button_current_1,

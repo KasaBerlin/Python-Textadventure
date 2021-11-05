@@ -1,8 +1,8 @@
-from tkinter import ttk
+from tkinter import Frame
 import abteil_constructor
 from main_gui import *
 
-frame_zahlenschloss = ttk.Frame(app, height=200, width=50)
+frame_zahlenschloss = Frame(app)
 schloss_öffnen="64"
 guessed_code={}
 
@@ -36,12 +36,11 @@ def change_code(op,element):
         element["text"]-=1 if element["text"] > 0 else 0
     guessed_code.update({element:str(element["text"])})
 
-
 def create_counter_index(amount_i):
         label=["label_code_"+str(var+1) for var in range(amount_i)] 
         counter_plus=["counter_plus_"+str(var+1) for var in range(amount_i)] 
         counter_minus=["counter_minus_"+str(var+1) for var in range(amount_i)]  
-        frame_zahlenschloss.grid(row=0, column=0, sticky="NESW")
+        frame_zahlenschloss.grid(row=2, column=2, sticky="NESW")
         frame_zahlenschloss.grid_rowconfigure(0, weight=1)
         frame_zahlenschloss.grid_columnconfigure(0, weight=1)
         for counter_element in range(amount_i):
