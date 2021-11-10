@@ -17,9 +17,9 @@ def zu_abteil_4(streak):
         button_current_1,
         "Ok",
         lambda: abteil_constructor.abteil_4_obj.init_streak(streak),
+        columnGrid=2,
+        padxGrid=60
     )
-    button_current_1.grid(padx=60, row=3, column=2)
-    button_current_1.config(height=2)
 
 
 def zu_abteil_2(streak):
@@ -38,7 +38,6 @@ def kein_leckerli():
     )
     zu_abteil_4(1)
 
-
 def leckerli():
     app.configure(bg=bg["abteil1_leckerli"])
     abteil_constructor.abteil_1_obj.inventar.remove("Leckerli")
@@ -49,7 +48,6 @@ def leckerli():
         fg=color["abteil1_leckerli"],
     )
     zu_abteil_4(1)
-
 
 def dog_quiz(e):
     # wenn guess_entry value "" ist, assign  0 to guess_entry
@@ -79,10 +77,8 @@ def dog_quiz(e):
             )
             abteil_constructor.abteil_1_obj.inventar.append("Leckerli")
             print(abteil_constructor.abteil_1_obj.inventar)
-            reassign_button(button_current_1, "Ja", leckerli)
-            reassign_button(button_current_2, "Nein", kein_leckerli)
-            button_current_1.config(width=10)
-            button_current_2.config(width=10)
+            reassign_button(button_current_1, "Ja", leckerli, width=10)
+            reassign_button(button_current_2, "Nein", kein_leckerli, width=10)
     if guesses_made == 6 and dog_year_converter != key_age_dog:
         entry_current.destroy()
         label_current.config(
@@ -105,9 +101,9 @@ def streak_1_3():
         "Spiel beenden",
         app.destroy,
         color["goodbye_button"],
+        columnGrid=2,
+        padxGrid=60
     )
-    button_current_1.grid(padx=60, row=3, column=2)
-    button_current_1.config(height=2)
 
 
 def streak_1_2(intro):
@@ -145,15 +141,15 @@ def streak_1_1():
         "Du verlässt genervt deinen Platz.\nDas röcheln hälst du nicht aus.\nDu streifst durch den Zug.",
         lambda: zu_abteil_2(1),
         color["abteil1_button_intro"],
+        width=50
     )
     reassign_button(
         button_current_2,
         "Du sprichst die Dame auf das Alter ihres Hundes an\nund streichelst ihn über den Kopf.",
         lambda: streak_1_2(1),
         color["abteil1_button_intro"],
+        width=50
     )
-    button_current_1.config(width=50)
-    button_current_2.config(width=50)
 
 
 entry_current.bind("<Return>", dog_quiz)

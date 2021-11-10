@@ -9,9 +9,9 @@ def goodbye():
         "Schließen",
         app.destroy,
         color["goodbye_button"],
+        columnGrid=2,
+        padxGrid=60,
     )
-    button_current_1.grid(padx=60, row=3, column=2)
-    button_current_1.config(height=2)
 
     button_current_2.grid_forget()
     label_current.config(

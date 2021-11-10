@@ -72,15 +72,14 @@ def zu_abteil_1_oder_abteil_3():
     reassign_button(
         button_current_1,
         "Abteil 1",
-        lambda: abteil_constructor.abteil_1_obj.init_streak(2, 2),
+        lambda: abteil_constructor.abteil_1_obj.init_streak(2, 2),width=10, height=5
     )
     reassign_button(
         button_current_2,
         "Abteil 3",
-        lambda: abteil_constructor.abteil_3_obj.init_streak(1),
+        lambda: abteil_constructor.abteil_3_obj.init_streak(1),width=10
     )
-    button_current_1.config(width=10, height=5)
-    button_current_2.config(width=10)
+
 
 
 def auswahlcheck(speisen_auswahl, getraenke_auswahl):
@@ -129,10 +128,9 @@ def bestellen(e):
             text=f"""Du hast jetzt noch {abteil_constructor.abteil_1_obj.inventar[0]} DM im Inventar.\n 
         Der Kellner fragt dich, ob du noch etwas bestellen möchtest?"""
         )
-        reassign_button(button_current_1, "Ja", streak_2_1)
-        reassign_button(button_current_2, "Nein", zu_abteil_1_oder_abteil_3)
-        button_current_1.config(width=10)
-        button_current_2.config(width=10)
+        reassign_button(button_current_1, "Ja", streak_2_1,width=10)
+        reassign_button(button_current_2, "Nein", zu_abteil_1_oder_abteil_3,width=10)
+
     else:
         label_current.config(text="""Leider hast du nicht mehr genug Geld.""")
         forget_buttons()
@@ -140,9 +138,11 @@ def bestellen(e):
             button_current_1,
             "Ok",
             zu_abteil_1_oder_abteil_3,
+            columnGrid=2,
+            padxGrid=60,
+            height=2,
+            width=20
         )
-        button_current_1.grid(padx=60, row=3, column=2),
-        button_current_1.config(height=2, width=20),
 
 
 getraenke.bind("<Return>", bestellen)

@@ -100,10 +100,10 @@ def zahlenschloss():
         "Code ausprobieren",
         check_code,
         color["abteil4_button_koffer"],
+        columnGrid=2,
+        padxGrid=60,
+        height=2
     )
-    button_current_1.grid(padx=60, row=3, column=2)
-    button_current_1.config(height=2)
-
 
 def gepaeckwagen_ade():
     label_current.config(
@@ -116,9 +116,10 @@ def gepaeckwagen_ade():
         button_current_1,
         "Zurück zu Abteil 1",
         lambda: abteil_constructor.abteil_1_obj.init_streak(3),
+        columnGrid=2,
+        padxGrid=60,
+        height=2
     )
-    button_current_1.grid(padx=60, row=3, column=2)
-    button_current_1.config(height=2)
 
 
 def koffer():
@@ -149,14 +150,13 @@ def im_dunkeln():
         text="""Du vernimmst Katzengeschrei. Du bist der Katze im Dunkeln auf den Schwanz getreten.\n
     Nach deiner Entschuldigung deutet sie auf die Lampe in der Ecke.\nUnd nun?"""
     )
-    reassign_button(button_current_1, "Du machst Licht und siehst dich um", koffer)
+    reassign_button(button_current_1, "Du machst Licht und siehst dich um", koffer, width=30)
     reassign_button(
         button_current_2,
         "Es ist dir zu gruselig und kehrst in Abteil 1 zurück",
         lambda: abteil_constructor.abteil_1_obj.init_streak(3),
+        width=40
     )
-    button_current_1.config(width=30)
-    button_current_2.config(width=40)
 
 
 def streak_4_1():
@@ -169,13 +169,13 @@ def streak_4_1():
         fg=color["abteil4_dunkel"],
     )
     reassign_button(
-        button_current_1, "Lampe suchen", koffer, color["abteil4_button_dunkel"]
+        button_current_1, "Lampe suchen", koffer, color["abteil4_button_dunkel"],
+        width=20, height=5
     )
     reassign_button(
         button_current_2,
         "Im Dunkeln vorantasten",
         im_dunkeln,
         color["abteil4_button_dunkel"],
+        width=20, height=5
     )
-    button_current_1.config(width=20, height=5)
-    button_current_2.config(width=20, height=5)

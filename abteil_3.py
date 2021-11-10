@@ -32,9 +32,7 @@ def racing_train_game(e):
                 )
                 entry_direction.destroy()
                 label_speed.destroy()
-                reassign_button(button_current_1, "Beenden", app.destroy)
-                button_current_1.grid(padx=60, row=3, column=2)
-                button_current_1.config(height=2)
+                reassign_button(button_current_1, "Beenden", app.destroy, columnGrid=2, padxGrid=60, height=2)
 
     else:
         entry_direction.destroy()
@@ -45,9 +43,9 @@ def racing_train_game(e):
             button_current_1,
             "Weiter",
             lambda: abteil_constructor.abteil_1_obj.init_streak(3),
+            columnGrid=2,
+            padxGrid=60
         )
-        button_current_1.grid(padx=60, row=3, column=2)
-        button_current_1.config(height=2)
 
 
 def racing_train_starter():
@@ -96,7 +94,9 @@ def streak_3_1():
     )
     forget_buttons()
     reassign_button(
-        button_current_1, "Starten", racing_train_starter, color["abteil3_button_intro"]
+        button_current_1, "Starten", 
+        racing_train_starter, 
+        color["abteil3_button_intro"],
+        columnGrid=2,
+        padxGrid=60
     )
-    button_current_1.grid(padx=60, row=3, column=2)
-    button_current_1.config(width=20, height=2)

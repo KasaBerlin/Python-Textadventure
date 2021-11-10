@@ -11,6 +11,7 @@ app.geometry("%dx%d+0+0" % (w, h))
 app.configure(background=bg["name"])
 app.rowconfigure([0, 1, 2, 3, 4], weight=1, minsize=100)
 app.columnconfigure([0, 1, 2, 3, 4], weight=1, minsize=200)
+# wm ruft windowmanager,iconPhoto method, windowName, image
 app.tk.call('wm', 'iconphoto', app._w, PhotoImage(file='images/favicon.gif'))
 
 normal = fonts["text"]
@@ -74,12 +75,12 @@ button_current_2 = Button(
     borderwidth=0,
 )
 
-
-def reassign_button(button, text, command, fg=None):
-    button["text"] = text
-    button["fg"] = fg
-    button["command"] = command
-    button.grid(row=3, column=1 if button == button_current_1 else 3)
+def reassign_button(button, text, command, fg=None,columnGrid=None,padxGrid=None,width=None,height=None):
+    button.config(text=text,fg=fg,command=command,width=width,height=height)
+    if button == button_current_1 and not columnGrid: column=1
+    elif button == button_current_2: column=3
+    else: column=columnGrid
+    button.grid(row=3, column=column,padx=padxGrid)
 
 
 def forget_buttons():
