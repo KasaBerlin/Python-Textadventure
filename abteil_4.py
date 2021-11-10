@@ -83,7 +83,6 @@ def create_counter_index(amount_i):
             sticky="se" if not counter_element else "sw",
         )
 
-
 def zahlenschloss():
     app.config(bg=bg["abteil4_koffer"])
 

@@ -1,8 +1,11 @@
+import json
 from tkinter import font, PhotoImage, Label, Entry, Button, LEFT, RIGHT, END, Tk
-from layout import theme
 
+with open("layout.json") as jsonFile:
+    theme = json.load(jsonFile)
+    jsonFile.close()
 
-app, fonts, bg = theme
+app, fonts, bg = theme.values()
 # tkinter-window mit Titel und Größe erzeugen
 app = Tk()
 app.title("Reise im Bergland-Express")
