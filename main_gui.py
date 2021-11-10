@@ -12,14 +12,7 @@ app.configure(background=bg["name"])
 app.rowconfigure([0, 1, 2, 3, 4], weight=1, minsize=100)
 app.columnconfigure([0, 1, 2, 3, 4], weight=1, minsize=200)
 
-# TODO Icon einbinden
-# ! ICON ???
-#
-# icon = PhotoImage(file="feier_icon.gif")
-# app.call("wm", "iconphoto", app._w, icon)
-# app.iconbitmap("feier_icon.icns")
-
-# ! ICON - wird noch nicht angezeigt
+app.tk.call("wm", "iconphoto", app._w, PhotoImage(file="images/favicon.gif"))
 
 
 normal = fonts["text"]
