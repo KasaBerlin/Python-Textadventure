@@ -129,7 +129,7 @@ def resize(e):
     elif width <= 1200:
         height_font_labels = 30
         height_font_buttons = 18
-        height_font_large = 46
+        height_font_large = 44
         app.rowconfigure([0, 1, 2, 3, 4], weight=1, minsize=100)
         app.columnconfigure([0, 1, 2, 3, 4], weight=1, minsize=200)
     else:
@@ -144,8 +144,8 @@ def resize(e):
     font_buttons["size"] = height_font_buttons
     font_entry["size"] = height_font_buttons
     font_texts_large["size"] = height_font_large
-    print(font_texts.actual())
-    print(font_buttons.actual())
+    # print(font_texts.actual())
+    # print(font_buttons.actual())
 
 
 app.bind("<Configure>", resize)

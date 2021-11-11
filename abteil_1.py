@@ -18,7 +18,7 @@ def zu_abteil_4(streak):
         "Ok",
         lambda: abteil_constructor.abteil_4_obj.init_streak(streak),
         columnGrid=2,
-        padxGrid=60
+        padxGrid=60,
     )
 
 
@@ -38,6 +38,7 @@ def kein_leckerli():
     )
     zu_abteil_4(1)
 
+
 def leckerli():
     app.configure(bg=bg["abteil1_leckerli"])
     abteil_constructor.abteil_1_obj.inventar.remove("Leckerli")
@@ -49,8 +50,9 @@ def leckerli():
     )
     zu_abteil_4(1)
 
+
 def dog_quiz(e):
-    # wenn guess_entry value "" ist, assign  0 to guess_entry
+    # wenn guess_entry value "" ist, assign 0 to guess_entry
     try:
         guess_entry.get()
     except:
@@ -94,15 +96,16 @@ def streak_1_3():
     forget_buttons()
     label_current.config(
         text="""Endlich wieder in Sicherheit. Du schaust aus dem Fenster,
-    unterhälst dich mit der alten Lady und genießt die Reise."""
-    ,bg=bg["abteil1_intro"])
+    unterhälst dich mit der alten Lady und genießt die Reise.""",
+        bg=bg["abteil1_intro"],
+    )
     reassign_button(
         button_current_1,
         "Spiel beenden",
         app.destroy,
         color["goodbye_button"],
         columnGrid=2,
-        padxGrid=60
+        padxGrid=60,
     )
 
 
@@ -131,7 +134,7 @@ def streak_1_1():
     label_current.config(
         text="""Im Zug lässt du dich auf deinem Sitzplatz nieder und schaust dich um.\nDie Sitze sind mit dunkelrotem Samt
     bezogen und die Wände mit dunklem Holz verkleidet.\nDer 20er Jahre Stil ist genau nach deinem Geschmack.
-    \nEine nette alte Dame setzt sich mit ihrem alten röchelden Mops neben dich und lächelt dich an.\nWas tust du?""",
+    \nEine nette alte Dame setzt sich mit ihrem\nalten röchelden Mops neben dich und lächelt dich an.\nWas tust du?""",
         font=font_texts,
         bg=bg["abteil1_intro"],
         fg=color["abteil1_intro"],
@@ -141,14 +144,14 @@ def streak_1_1():
         "Du verlässt genervt deinen Platz.\nDas röcheln hälst du nicht aus.\nDu streifst durch den Zug.",
         lambda: zu_abteil_2(1),
         color["abteil1_button_intro"],
-        width=50
+        width=50,
     )
     reassign_button(
         button_current_2,
         "Du sprichst die Dame auf das Alter ihres Hundes an\nund streichelst ihn über den Kopf.",
         lambda: streak_1_2(1),
         color["abteil1_button_intro"],
-        width=50
+        width=50,
     )
 
 

@@ -55,19 +55,23 @@ def zu_abteil_1_oder_abteil_3():
     reassign_button(
         button_current_1,
         "Abteil 1",
-        lambda: abteil_constructor.abteil_1_obj.init_streak(2, 2),width=10, height=5
+        lambda: abteil_constructor.abteil_1_obj.init_streak(2, 2),
+        width=10,
+        height=5,
     )
     reassign_button(
         button_current_2,
         "Abteil 3",
-        lambda: abteil_constructor.abteil_3_obj.init_streak(1),width=10
+        lambda: abteil_constructor.abteil_3_obj.init_streak(1),
+        width=10,
     )
-
 
 
 def auswahlcheck():
     selection_getraenk = list_getraenke.curselection()
+    print(selection_getraenk)
     value_getraenk = list_getraenke.get(selection_getraenk[0])
+    print(value_getraenk)
 
     check1 = (
         speisekarte["Getraenke"][value_getraenk]
@@ -76,7 +80,9 @@ def auswahlcheck():
         else 0
     )
     selection_speise = list_speisen.curselection()
+    print(selection_speise)
     value_speise = list_speisen.get(selection_speise[0])
+    print(value_speise)
     check2 = (
         speisekarte["Speisen"][value_speise]
         if list_speisen.get(list_speisen.curselection())
@@ -116,8 +122,8 @@ def bestellen(e):
             text=f"""Du hast jetzt noch {abteil_constructor.abteil_1_obj.inventar[0]} DM im Inventar.\n 
         Der Kellner fragt dich, ob du noch etwas bestellen möchtest?"""
         )
-        reassign_button(button_current_1, "Ja", streak_2_1,width=10)
-        reassign_button(button_current_2, "Nein", zu_abteil_1_oder_abteil_3,width=10)
+        reassign_button(button_current_1, "Ja", streak_2_1, width=10)
+        reassign_button(button_current_2, "Nein", zu_abteil_1_oder_abteil_3, width=10)
 
     else:
         label_current.config(text="""Leider hast du nicht mehr genug Geld.""")
@@ -129,7 +135,7 @@ def bestellen(e):
             columnGrid=2,
             padxGrid=60,
             height=2,
-            width=20
+            width=20,
         )
 
 
