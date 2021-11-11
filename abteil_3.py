@@ -51,7 +51,7 @@ def racing_train_game(e):
 
 
 def racing_train_starter():
-    app.configure(background=bg["abteil3_racing"])
+    app.configure(bg=bg["abteil3_racing"])
     entry_direction.grid(pady=30, row=2, column=2)
     label_speed.grid(
         pady=20,
@@ -66,7 +66,7 @@ def racing_train_starter():
     label_current.configure(font=font_texts_large)
     label_current.config(
         text=random.choice(directions),
-        background=bg["abteil3_racing"],
+        bg=bg["abteil3_racing"],
         fg=color["abteil3_racing"],
         pady=30,
     )
@@ -83,7 +83,6 @@ def streak_3_1():
     app.configure(background=bg["abteil3_intro"])
     current_image.configure(file="images/emergency.png")
 
-    label_current.configure(font=font_texts)
     text_emergency = """Der Lokführer kommt panisch auf dich zu gerannt und bittet um deine Hilfe.\n
     Durch die Kälte in den Bergen, ist die Bremse eingefroren und der Zug fährt viel zu schnell.
     \n Der Lokführer kümmert sich schon darum, aber um den Zug auf den Schienen zu halten, musst du beim Lenken helfen.
@@ -93,6 +92,7 @@ def streak_3_1():
         text=text_emergency,
         bg=bg["abteil3_intro"],
         fg=color["abteil3_intro"],
+        font=font_texts,
     )
     forget_buttons()
     reassign_button(

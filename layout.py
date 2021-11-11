@@ -9,7 +9,7 @@ fonts = {
         "size": 34,
     },
     "text": {"family": "Marbre", "size": 30},
-    "text_large": {"family": "Marbre", "size": 46, "weight": "bold"},
+    "text_large": {"family": "Marbre", "size": 44, "weight": "bold"},
     "entry": {"family": "Athene", "size": 18, "weight": "bold"},
     "button": {"family": "Sinhala MN", "size": 18},
     "color": {

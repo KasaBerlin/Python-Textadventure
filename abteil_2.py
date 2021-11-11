@@ -4,13 +4,13 @@ from tkinter import StringVar, Listbox
 
 speisekarte = {
     "Getraenke": {
-        "Whiskey 4cl": 8,
-        "Bier 0.5ml": 4,
-        "Milch 300ml": 3,
-        "Tasse Kaffee": 5,
-        "Tasse Tee": 4,
+        "Whiskey 4cl:": 8,
+        "Bier 0.5ml:": 4,
+        "Milch 300ml:": 3,
+        "Tasse Kaffee:": 5,
+        "Tasse Tee:": 4,
     },
-    "Speisen": {"Kuchen des Tages": 10, "Eisbein": 15, "Suppe des Tages": 10},
+    "Speisen": {"Kuchen des Tages:": 10, "Eisbein:": 15, "Suppe des Tages:": 10},
 }
 
 
@@ -22,10 +22,9 @@ list_getraenke = Listbox(
     fg=color["abteil2_list"],
     bg=bg["abteil2_list"],
 )
-for getraenk in sorted(speisekarte["Getraenke"]):
-    list_getraenke.insert(
-        END, "{}: {} DM".format(getraenk, speisekarte["Getraenke"][getraenk])
-    )
+
+for getraenk in speisekarte["Getraenke"]:
+    list_getraenke.insert(END, getraenk)
 
 list_speisen = Listbox(
     app,
@@ -35,12 +34,10 @@ list_speisen = Listbox(
     fg=color["abteil2_list"],
     bg=bg["abteil2_list"],
 )
-for speise in sorted(speisekarte["Speisen"]):
-    list_speisen.insert(END, "{}: {} DM".format(speise, speisekarte["Speisen"][speise]))
+for speise in speisekarte["Speisen"]:
+    # TODO: Preise in der Speisekarte ergänzen
+    list_speisen.insert(END, "{}".format(speise, speisekarte["Speisen"][speise]))
 
-
-getraenke_auswahl = StringVar()
-speisen_auswahl = StringVar()
 
 label_getraenke = Label(app, text="Getränke")
 label_speisen = Label(app, text="Speisen")
@@ -69,47 +66,24 @@ def zu_abteil_1_oder_abteil_3():
     button_current_2.config(width=10)
 
 
-def auswahlcheck1(speisen_auswahl, getraenke_auswahl):
-    check1 = (
-        speisekarte["Getraenke"][getraenke_auswahl.get()]
-        if getraenke_auswahl.get() in speisekarte["Getraenke"].keys()
-        else 0
-    )
-    check2 = (
-        speisekarte["Speisen"][speisen_auswahl.get()]
-        if speisen_auswahl.get() in speisekarte["Speisen"].keys()
-        else 0
-    )
-    print(check1, check2)
-
-    return check1 + check2
-
-
-def auswahlcheck(getraenke_auswahl, speisen_auswahl):
+def auswahlcheck():
+    selection_getraenk = list_getraenke.curselection()
+    value_getraenk = list_getraenke.get(selection_getraenk[0])
 
     check1 = (
-        speisekarte["Getraenke"][getraenke_auswahl.get()]
+        speisekarte["Getraenke"][value_getraenk]
         if list_getraenke.get(list_getraenke.curselection())
         in speisekarte["Getraenke"].keys()
         else 0
     )
+    selection_speise = list_speisen.curselection()
+    value_speise = list_speisen.get(selection_speise[0])
     check2 = (
-        speisekarte["Speisen"][speisen_auswahl.get()]
+        speisekarte["Speisen"][value_speise]
         if list_speisen.get(list_speisen.curselection())
         in speisekarte["Speisen"].keys()
         else 0
     )
-
-    print(
-        list_getraenke.get(list_getraenke.curselection()),
-        list_speisen.get(list_speisen.curselection()),
-    )
-    print(speisen_auswahl.get(), getraenke_auswahl.get())
-    print(
-        speisekarte["Getraenke"][speisen_auswahl.get()],
-        speisekarte["Getraenke"][getraenke_auswahl.get()],
-    )
-    print(check1, check2)
     return check1 + check2
 
 
@@ -136,10 +110,7 @@ def streak_2_1():
 
 
 def bestellen(e):
-    bezahlung = abteil_constructor.abteil_1_obj.inventar[0] - auswahlcheck(
-        getraenke_auswahl,
-        speisen_auswahl,
-    )
+    bezahlung = abteil_constructor.abteil_1_obj.inventar[0] - auswahlcheck()
     if bezahlung > 0:
         abteil_constructor.abteil_1_obj.inventar[0] = bezahlung
         label_current.config(
