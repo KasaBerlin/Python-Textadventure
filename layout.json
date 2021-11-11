@@ -8,10 +8,24 @@
       "family": "The Bravery Lite Ver.",
       "size": 34
     },
-    "text": { "family": "Marbre", "size": 30 },
-    "text_large": { "family": "Marbre", "size": 46, "weight": "bold" },
-    "entry": { "family": "Athene", "size": 18, "weight": "bold" },
-    "button": { "family": "Sinhala MN", "size": 18 },
+    "text": {
+      "family": "Marbre",
+      "size": 30
+    },
+    "text_large": {
+      "family": "Marbre",
+      "size": 46,
+      "weight": "bold"
+    },
+    "entry": {
+      "family": "Athene",
+      "size": 18,
+      "weight": "bold"
+    },
+    "button": {
+      "family": "Sinhala MN",
+      "size": 18
+    },
     "color": {
       "name": "#E6ECE5",
       "name_entry": "#031126",

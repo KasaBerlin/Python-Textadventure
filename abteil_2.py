@@ -8,9 +8,9 @@ speisekarte = {
         "Bier 0.5ml:": 4,
         "Milch 300ml:": 3,
         "Tasse Kaffee:": 5,
-        "Tasse Tee:": 4,
+        "Tasse Tee:": 4
     },
-    "Speisen": {"Kuchen des Tages:": 10, "Eisbein:": 15, "Suppe des Tages:": 10},
+    "Speisen": {"Kuchen des Tages:": 10, "Eisbein:": 15, "Suppe des Tages:": 10}
 }
 
 
@@ -20,7 +20,7 @@ list_getraenke = Listbox(
     height=5,
     font=font_entry,
     fg=color["abteil2_list"],
-    bg=bg["abteil2_list"],
+    bg=bg["abteil2_list"]
 )
 
 for getraenk in speisekarte["Getraenke"]:
@@ -32,7 +32,7 @@ list_speisen = Listbox(
     height=3,
     font=font_entry,
     fg=color["abteil2_list"],
-    bg=bg["abteil2_list"],
+    bg=bg["abteil2_list"]
 )
 for speise in speisekarte["Speisen"]:
     # TODO: Preise in der Speisekarte ergänzen
@@ -57,13 +57,13 @@ def zu_abteil_1_oder_abteil_3():
         "Abteil 1",
         lambda: abteil_constructor.abteil_1_obj.init_streak(2, 2),
         width=10,
-        height=5,
+        height=5
     )
     reassign_button(
         button_current_2,
         "Abteil 3",
         lambda: abteil_constructor.abteil_3_obj.init_streak(1),
-        width=10,
+        width=10
     )
 
 
@@ -97,10 +97,10 @@ def streak_2_1():
     current_image.configure(file="images/speisewagen.png")
 
     label_current.config(
-        text="""Du findest einen Platz im Speisewagen und studierst die Karte - 
+        text="""Du findest einen Platz im Speisewagen und studierst die Karte -
     du brauchst erstmal was zur Beruhigung.\nWas möchtest du bestellen?""",
         bg=bg["abteil2_speisewagen"],
-        fg=color["abteil2_speisewagen"],
+        fg=color["abteil2_speisewagen"]
     )
     label_getraenke.grid(pady=10, row=2, column=1, sticky="ne")
     label_getraenke.config(
@@ -119,7 +119,7 @@ def bestellen(e):
     if bezahlung > 0:
         abteil_constructor.abteil_1_obj.inventar[0] = bezahlung
         label_current.config(
-            text=f"""Du hast jetzt noch {abteil_constructor.abteil_1_obj.inventar[0]} DM im Inventar.\n 
+            text=f"""Du hast jetzt noch {abteil_constructor.abteil_1_obj.inventar[0]} DM im Inventar.\n
         Der Kellner fragt dich, ob du noch etwas bestellen möchtest?"""
         )
         reassign_button(button_current_1, "Ja", streak_2_1, width=10)
@@ -135,7 +135,7 @@ def bestellen(e):
             columnGrid=2,
             padxGrid=60,
             height=2,
-            width=20,
+            width=20
         )
 
 

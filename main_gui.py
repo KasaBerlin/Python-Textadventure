@@ -38,7 +38,7 @@ font_buttons = font.Font(family=button["family"], size=button["size"])
 # Bild einbinden
 current_image = PhotoImage(file="images/name.png")
 label_image = Label(image=current_image, borderwidth=0).grid(
-    pady=30, row=0, column=1, columnspan=3
+    pady=10, row=0, column=1, columnspan=3
 )
 
 # Elemente anlegen
@@ -48,7 +48,7 @@ label_current = Label(
     bg=bg["name"],
     fg=color["name"],
 )
-label_current.grid(pady=20, padx=40, row=1, column=0, columnspan=5)
+label_current.grid(pady=10, padx=40, row=1, column=0, columnspan=5)
 label_current.configure(font=font_texts)
 
 entry_username = Entry(
@@ -63,7 +63,6 @@ entry_username.grid(padx=5, pady=10, row=2, column=1, columnspan=3)
 entry_username.focus()
 
 entry_current = Entry(app)
-
 
 button_current_1 = Button(
     app,

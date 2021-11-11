@@ -54,19 +54,19 @@ def racing_train_starter():
     label_speed.grid(
         pady=20,
         row=3,
-        column=2,
+        column=2
     )
     label_speed.config(
         text=f"Der Zug fährt {abteil_constructor.abteil_3_obj.geschwindigkeit} kmh.",
         font=font_entry,
-        bg=bg["abteil3_racing"],
+        bg=bg["abteil3_racing"]
     )
     label_current.configure(font=font_texts_large)
     label_current.config(
         text=random.choice(directions),
         bg=bg["abteil3_racing"],
         fg=color["abteil3_racing"],
-        pady=30,
+        pady=30
     )
     button_current_1.grid_forget()
 
@@ -90,12 +90,12 @@ def streak_3_1():
         text=text_emergency,
         bg=bg["abteil3_intro"],
         fg=color["abteil3_intro"],
-        font=font_texts,
+        font=font_texts
     )
     forget_buttons()
     reassign_button(
-        button_current_1, "Starten", 
-        racing_train_starter, 
+        button_current_1, "Starten",
+        racing_train_starter,
         color["abteil3_button_intro"],
         columnGrid=2,
         padxGrid=60
