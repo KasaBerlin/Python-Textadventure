@@ -2,6 +2,7 @@ import random
 import abteil_constructor
 from main_gui import *
 
+
 def goodbye():
     app.configure(bg=bg["goodbye"])
     reassign_button(
@@ -20,6 +21,7 @@ def goodbye():
         fg=color["goodbye"],
     )
     current_image.configure(file="images/goodbye.png")
+
 
 def paar_beobachten():
     app.configure(bg=bg["exit"])
@@ -43,9 +45,12 @@ def paar_beobachten():
         goodbye,
         color["exit_button"],
     )
+
+
 def zu_abteil_1():
     entry_username.destroy()
     abteil_constructor.abteil_1_obj.init_streak(1)
+
 
 def welcome(e=None):
     # check ob wir schon Urlaubsgeld erhalten haben

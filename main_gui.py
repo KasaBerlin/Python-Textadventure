@@ -15,7 +15,7 @@ app.configure(background=bg["name"])
 app.rowconfigure([0, 1, 2, 3, 4], weight=1, minsize=100)
 app.columnconfigure([0, 1, 2, 3, 4], weight=1, minsize=200)
 # wm ruft windowmanager,iconPhoto method, windowName, image
-app.tk.call('wm', 'iconphoto', app._w, PhotoImage(file='images/favicon.gif'))
+app.tk.call("wm", "iconphoto", app._w, PhotoImage(file="images/favicon.gif"))
 
 normal = fonts["text"]
 large = fonts["text_large"]
@@ -45,22 +45,25 @@ label_image = Label(image=current_image, borderwidth=0).grid(
 label_current = Label(
     app,
     text="Willkommen in einem Abenteuer!\n\nBitte gib zuerst einen Usernamen ein:",
-    background=bg["name"],
+    bg=bg["name"],
     fg=color["name"],
 )
-label_current.grid(pady=20, row=1, column=1, columnspan=3)
+label_current.grid(pady=20, padx=40, row=1, column=0, columnspan=5)
 label_current.configure(font=font_texts)
 
 entry_username = Entry(
     app,
+    textvariable="",
     bg=bg["name_entry"],
     fg=color["name_entry"],
     font=font_entry,
     borderwidth=0,
 )
 entry_username.grid(padx=5, pady=10, row=2, column=1, columnspan=3)
+entry_username.focus()
 
 entry_current = Entry(app)
+
 
 button_current_1 = Button(
     app,
@@ -78,12 +81,25 @@ button_current_2 = Button(
     borderwidth=0,
 )
 
-def reassign_button(button, text, command, fg=None,columnGrid=None,padxGrid=None,width=None,height=None):
-    button.config(text=text,fg=fg,command=command,width=width,height=height)
-    if button == button_current_1 and not columnGrid: column=1
-    elif button == button_current_2: column=3
-    else: column=columnGrid
-    button.grid(row=3, column=column,padx=padxGrid)
+
+def reassign_button(
+    button,
+    text,
+    command,
+    fg=None,
+    columnGrid=None,
+    padxGrid=None,
+    width=None,
+    height=None,
+):
+    button.config(text=text, fg=fg, command=command, width=width, height=height)
+    if button == button_current_1 and not columnGrid:
+        column = 1
+    elif button == button_current_2:
+        column = 3
+    else:
+        column = columnGrid
+    button.grid(row=3, column=column, padx=padxGrid)
 
 
 def forget_buttons():
@@ -92,25 +108,45 @@ def forget_buttons():
 
 
 # TODO : responsive Schrift einbauen
-""" def resize(e):
-    height = label_current.winfo_height()
-    width = label_current.winfo_width()
-    height = height // 2
-    print("height %s" % height)
+def resize(e):
+    width = app.winfo_width()
+    height_font_labels = 30
+    height_font_buttons = 18
+    height_font_large = 44
     print("width %s" % width)
-    if height < 10 or width < 200:
-        height = 10
-    elif width < 400 and height > 20:
-        height = 20
-    elif width < 600 and height > 30:
-        height = 30
+    if width <= 500:
+        height_font_labels -= 10
+        height_font_buttons -= 5
+        height_font_large -= 14
+        app.rowconfigure([0, 1, 2, 3, 4], weight=1, minsize=50)
+        app.columnconfigure([0, 1, 2, 3, 4], weight=1, minsize=100)
+    elif width <= 900:
+        height_font_labels -= 6
+        height_font_buttons -= 3
+        height_font_large -= 8
+        app.rowconfigure([0, 1, 2, 3, 4], weight=1, minsize=100)
+        app.columnconfigure([0, 1, 2, 3, 4], weight=1, minsize=150)
+    elif width <= 1200:
+        height_font_labels = 30
+        height_font_buttons = 18
+        height_font_large = 46
+        app.rowconfigure([0, 1, 2, 3, 4], weight=1, minsize=100)
+        app.columnconfigure([0, 1, 2, 3, 4], weight=1, minsize=200)
     else:
-        height = 40
-    print("height %s" % height)
+        height_font_labels += 4
+        height_font_buttons += 2
+        height_font_large += 4
+        app.rowconfigure([0, 1, 2, 3, 4], weight=1, minsize=100)
+        app.columnconfigure([0, 1, 2, 3, 4], weight=1, minsize=240)
 
-    font_texts["size"] = height
+    font_texts["size"] = height_font_labels
+    font_gratulations["size"] = height_font_labels
+    font_buttons["size"] = height_font_buttons
+    font_entry["size"] = height_font_buttons
+    font_texts_large["size"] = height_font_large
     print(font_texts.actual())
+    print(font_buttons.actual())
 
 
-app.bind("<Configure>", resize) """
+app.bind("<Configure>", resize)
 # ! mainloop befindet sich in welcome_gui

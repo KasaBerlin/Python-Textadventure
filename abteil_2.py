@@ -1,70 +1,53 @@
 import abteil_constructor
 from main_gui import *
-from tkinter import ttk, StringVar
-
-
-combostyle = ttk.Style()
-combostyle.theme_create(
-    "combostyle",
-    parent="alt",
-    settings={
-        "TCombobox": {
-            "configure": {
-                "selectbackground": "grey",
-                "fieldbackground": "grey",
-                "background": "green",
-                "foreground": "#064720",
-                "selectforeground": "#064720",
-            }
-        }
-    },
-)
-combostyle.theme_use("combostyle")
+from tkinter import StringVar, Listbox
 
 speisekarte = {
     "Getraenke": {
-        "Whiskey 4cl": 8,
-        "Bier 0.5ml": 4,
-        "Milch 300ml": 3,
-        "Tasse Kaffee": 5,
-        "Tasse Tee": 4,
+        "Whiskey 4cl:": 8,
+        "Bier 0.5ml:": 4,
+        "Milch 300ml:": 3,
+        "Tasse Kaffee:": 5,
+        "Tasse Tee:": 4,
     },
-    "Speisen": {"Kuchen des Tages": 10, "Eisbein": 15, "Suppe des Tages": 10},
+    "Speisen": {"Kuchen des Tages:": 10, "Eisbein:": 15, "Suppe des Tages:": 10},
 }
 
-getraenke_auswahl = StringVar()
-speisen_auswahl = StringVar()
+
+list_getraenke = Listbox(
+    app,
+    exportselection=0,
+    height=5,
+    font=font_entry,
+    fg=color["abteil2_list"],
+    bg=bg["abteil2_list"],
+)
+
+for getraenk in speisekarte["Getraenke"]:
+    list_getraenke.insert(END, getraenk)
+
+list_speisen = Listbox(
+    app,
+    exportselection=0,
+    height=3,
+    font=font_entry,
+    fg=color["abteil2_list"],
+    bg=bg["abteil2_list"],
+)
+for speise in speisekarte["Speisen"]:
+    # TODO: Preise in der Speisekarte ergänzen
+    list_speisen.insert(END, "{}".format(speise, speisekarte["Speisen"][speise]))
+
 
 label_getraenke = Label(app, text="Getränke")
 label_speisen = Label(app, text="Speisen")
-
-getraenke = ttk.Combobox(
-    app,
-    values=list(speisekarte["Getraenke"].keys()),
-    textvariable=getraenke_auswahl,
-    font=font_entry,
-    # width=50,
-    height=30,
-)
-getraenke.set("Wähle aus:")
-
-
-speisen = ttk.Combobox(
-    app,
-    values=list(speisekarte["Speisen"].keys()),
-    textvariable=speisen_auswahl,
-    font=font_entry,
-    height=50,
-)
-speisen.set("Wähle aus:")
-app.option_add("*TCombobox*Listbox.font", font_entry)
 
 
 def zu_abteil_1_oder_abteil_3():
     label_getraenke.destroy()
     label_speisen.destroy()
-    getraenke.destroy()
-    speisen.destroy()
+    list_getraenke.destroy()
+    list_speisen.destroy()
     label_current.config(
         text="\nDu kannst zurück ins Abteil 1 oder weiter zu Abteil 3."
     )
@@ -82,15 +65,22 @@ def zu_abteil_1_oder_abteil_3():
 
 
 
-def auswahlcheck(speisen_auswahl, getraenke_auswahl):
+def auswahlcheck():
+    selection_getraenk = list_getraenke.curselection()
+    value_getraenk = list_getraenke.get(selection_getraenk[0])
+
     check1 = (
-        speisekarte["Getraenke"][getraenke_auswahl.get()]
-        if getraenke_auswahl.get() in speisekarte["Getraenke"].keys()
+        speisekarte["Getraenke"][value_getraenk]
+        if list_getraenke.get(list_getraenke.curselection())
+        in speisekarte["Getraenke"].keys()
         else 0
     )
+    selection_speise = list_speisen.curselection()
+    value_speise = list_speisen.get(selection_speise[0])
     check2 = (
-        speisekarte["Speisen"][speisen_auswahl.get()]
-        if speisen_auswahl.get() in speisekarte["Speisen"].keys()
+        speisekarte["Speisen"][value_speise]
+        if list_speisen.get(list_speisen.curselection())
+        in speisekarte["Speisen"].keys()
         else 0
     )
     return check1 + check2
@@ -110,18 +100,16 @@ def streak_2_1():
     label_getraenke.config(
         font=font_texts, bg=bg["abteil2_speisewagen"], fg=color["abteil2_speisewagen"]
     )
-    getraenke.grid(pady=10, row=2, column=1, sticky="e")
+    list_getraenke.grid(pady=10, row=2, column=1, sticky="se")
     label_speisen.grid(pady=10, row=2, column=3, sticky="nw")
     label_speisen.config(
         font=font_texts, bg=bg["abteil2_speisewagen"], fg=color["abteil2_speisewagen"]
     )
-    speisen.grid(pady=10, row=2, column=3, sticky="w")
+    list_speisen.grid(pady=10, row=2, column=3, sticky="sw")
 
 
 def bestellen(e):
-    bezahlung = abteil_constructor.abteil_1_obj.inventar[0] - auswahlcheck(
-        speisen_auswahl, getraenke_auswahl
-    )
+    bezahlung = abteil_constructor.abteil_1_obj.inventar[0] - auswahlcheck()
     if bezahlung > 0:
         abteil_constructor.abteil_1_obj.inventar[0] = bezahlung
         label_current.config(
@@ -145,5 +133,5 @@ def bestellen(e):
         )
 
 
-getraenke.bind("<Return>", bestellen)
-speisen.bind("<Return>", bestellen)
+list_getraenke.bind("<Return>", bestellen)
+list_speisen.bind("<Return>", bestellen)
